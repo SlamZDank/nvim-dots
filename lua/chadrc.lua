@@ -1,7 +1,7 @@
 local options = {
 
   base46 = {
-    theme = "ayu_light",
+    theme = "ayu_dark",
     hl_add = {},
      hl_override = {
       Comment = { italic = true },
