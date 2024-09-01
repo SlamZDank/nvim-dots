@@ -45,14 +45,14 @@ return {
 
     keymap.set(
       "n",
-      "<leader>po",
+      "<leader>pp",
       "<cmd>Telescope neovim-project discover<CR>",
       { desc = "Search all of the available projects" }
     ) -- Open a list of projects
 
     keymap.set(
       "n",
-      "<leader>pr",
+      "<leader>po",
       "<cmd>Telescope neovim-project history<CR>",
       { desc = "Search recently opened projects" }
     ) -- Open a list of projects

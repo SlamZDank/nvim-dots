@@ -1,7 +1,7 @@
 local options = {
 
   base46 = {
-    theme = "ayu_dark",
+    theme = "ayu_light",
     hl_add = {},
      hl_override = {
       Comment = { italic = true },
@@ -15,7 +15,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "onedark", "one_light" },
+    theme_toggle = { "ayu_light", "ayu_dark" },
   },
 
   ui = {
@@ -68,8 +68,8 @@ local options = {
     buttons = {
       { "  Find File", "Spc f f", "Telescope find_files" },
       { "  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "  Find Project", "Spc p o", "Telescope neovim-project discover" },
-      { "  Recent Sessions", "Spc p r", "Telescope neovim-project history" },
+      { "  Find Project", "Spc p p", "Telescope neovim-project discover" },
+      { "  Recent Sessions", "Spc p o", "Telescope neovim-project history" },
       { "  Find Word", "Spc f w", "Telescope live_grep" },
       { "  Bookmarks", "Spc m a", "Telescope marks" },
       { "  Themes", "Spc t h", "Telescope themes" },
