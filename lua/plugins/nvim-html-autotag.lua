@@ -14,7 +14,8 @@ return {
       -- doesn't work well in a specific filetype
       per_filetype = {
         ["html"] = {
-          enable_close = true,
+        },
+        ["jsx"] = {
         },
       },
     }
