@@ -22,7 +22,7 @@ return {
    		ensure_installed = {
    			"lua-language-server", "stylua",
    			"codelldb", "clang-format", "clangd",
-   			"rust-analyser"
+   			"rust-analyser", "basedpyright",
       },
    	},
    },
