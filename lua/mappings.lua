@@ -9,7 +9,6 @@ keymap("i", "jk", "<ESC>")
 
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
-
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -32,11 +31,10 @@ keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Switch to the window on the right" })
 
 -- DAP support
-keymap("n", "<Leader>db", ':DapToggleBreakpoint<CR>', { desc = "Toggle debugger breakpoint" })
-keymap("n", "<Leader>dr", ':DapContinue<CR>', { desc = "Start or continue the debugger" })
-keymap("n", "<Leader>dx", ':DapTerminate<CR>', { desc = "Terminate debugger" })
-keymap("n", "<Leader>do", ':DapStepOver<CR>', { desc = "Debugger step over" })
-
+keymap("n", "<Leader>db", ":DapToggleBreakpoint<CR>", { desc = "Toggle debugger breakpoint" })
+keymap("n", "<Leader>dr", ":DapContinue<CR>", { desc = "Start or continue the debugger" })
+keymap("n", "<Leader>dx", ":DapTerminate<CR>", { desc = "Terminate debugger" })
+keymap("n", "<Leader>do", ":DapStepOver<CR>", { desc = "Debugger step over" })
 
 -- Clear search highlights
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -77,7 +75,6 @@ keymap("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
 keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
 keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
 
-
 -- window management
 keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap("n", "<leader>so", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
@@ -90,7 +87,6 @@ keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" }) --
 keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" }) --  go to previous tab
 keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new workspace" }) --  move current buffer to new tab
 
-keymap('n', 'q', '', {})
+keymap("n", "q", "", {})
 -- keymap("n", "<leader>tn", "<Tab>", { desc = "Go to next tab" }) --  go to next tab
 -- keymap("n", "<leader>tp", "<S-Tab>", { desc = "Go to previous workspace" }) --  go to previous tab
-

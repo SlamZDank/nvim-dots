@@ -36,8 +36,7 @@ return {
           vim.fn.expand "~", -- don't create a session for $HOME/
           "/tmp",
         },
-        autosave_ignore_filetypes = {
-        },
+        autosave_ignore_filetypes = {},
       },
     }
 
