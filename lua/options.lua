@@ -43,6 +43,7 @@ local options = {
   foldlevel = 99, -- do not fold everything by default, it is annoying to deal with 
 }
 
+-- set all the oprions in the table above
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
