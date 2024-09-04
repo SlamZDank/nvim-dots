@@ -39,6 +39,8 @@ local options = {
   sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
   guifont = "JetBrainsMono Nerd Font:h10", -- the font used in graphical neovim applications such as neovide
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
+  foldmethod = 'indent', -- folding method best suited for easily navigating code
+  foldlevel = 99, -- do not fold everything by default, it is annoying to deal with 
 }
 
 for k, v in pairs(options) do
