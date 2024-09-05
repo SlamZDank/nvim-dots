@@ -6,8 +6,7 @@ local keymap = vim.keymap.set
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
 keymap("i", "jk", "<ESC>")
-
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+keymap("n", "i", "i <BS>") -- workaround for the cmd bar showing upon going into insert mode using i
 
 local opts = { noremap = true, silent = true }
 
