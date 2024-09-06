@@ -36,6 +36,18 @@ local options = {
       modules = nil,
     },
 
+    mason = {
+      cmd = true,
+      pkgs = {
+        "lua-language-server",
+        "stylua",
+        "codelldb",
+        "clang-format",
+        "clangd",
+        "rust-analyser",
+        "basedpyright",
+      },
+    },
     -- lazyload it when there are 1+ buffers
     tabufline = {
       enabled = true,

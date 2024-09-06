@@ -18,13 +18,7 @@ return {
   --
   {
    	"williamboman/mason.nvim",
-   	opts = {
-   		ensure_installed = {
-   			"lua-language-server", "stylua",
-   			"codelldb", "clang-format", "clangd",
-   			"rust-analyser", "basedpyright",
-      },
-   	},
+   	opts = {},
    },
 
    {
