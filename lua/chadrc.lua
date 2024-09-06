@@ -48,7 +48,7 @@ local options = {
         "basedpyright",
       },
     },
-    -- lazyload it when there are 1+ buffers
+
     tabufline = {
       enabled = true,
       lazyload = true,
