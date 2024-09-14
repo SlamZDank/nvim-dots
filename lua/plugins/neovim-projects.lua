@@ -1,11 +1,5 @@
 return {
   "coffebar/neovim-project",
-  opts = {
-    projects = { -- define project roots
-      "~/dev/*",
-      "~/.config/*",
-    },
-  },
   init = function()
     -- enable saving the state of plugins in the session
     vim.opt.sessionoptions:append "globals" -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
@@ -13,8 +7,9 @@ return {
   config = function()
     local neovim_project = require "neovim-project"
     neovim_project.setup {
-      -- Project directories
+      -- Project directories + home for simpler navigation
       projects = {
+        "~/",
         "~/projects/*",
         "~/dev/*",
         "~/.config/*",
