@@ -26,7 +26,7 @@ local term_opts = { silent = true }
 -- Normal --
 -- Better window navigation
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle the Nvim Tree" })
-
+keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action", noremap = true, silent = true })
 keymap("n", "<C-h>", "<C-w>h", { desc = "Switch to the window on the left " })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Switch to the window on the bottom" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
