@@ -26,7 +26,12 @@ local term_opts = { silent = true }
 -- Normal --
 -- Better window navigation
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle the Nvim Tree" })
-keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code Action", noremap = true, silent = true })
+keymap(
+  "n",
+  "<leader>ca",
+  "<cmd>lua vim.lsp.buf.code_action()<CR>",
+  { desc = "Code Action", noremap = true, silent = true }
+)
 keymap("n", "<C-h>", "<C-w>h", { desc = "Switch to the window on the left " })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Switch to the window on the bottom" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
@@ -92,3 +97,16 @@ keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in 
 keymap("n", "q", "", {})
 -- keymap("n", "<leader>tn", "<Tab>", { desc = "Go to next tab" }) --  go to next tab
 -- keymap("n", "<leader>tp", "<S-Tab>", { desc = "Go to previous workspace" }) --  go to previous tab
+
+-- add minty and menu and remove the default context menu and color meny
+keymap("n", "<leader>rm", function()
+  require("menu").open "default"
+end, { desc = "Open the context menu" })
+
+-- mouse users + nvimtree users!
+keymap("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, { desc = "Open the context menu" })
