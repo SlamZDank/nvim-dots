@@ -7,7 +7,6 @@ local options = {
       ["@comment"] = { italic = true },
       NvDashAscii = { fg = "#60ffbf", bg = "#161616" },
       NvDashButtons = { fg = "#ffffff", bg = "#000000" },
-      NvDash = { fg = "", bg = "" },
       TblineFill = {},
       NvimTreeRootFolder = { link = "NvimTreeFolderName" },
     },
@@ -19,9 +18,13 @@ local options = {
 
   ui = {
     cmp = {
-      icons = true,
+      icons_left = false, -- only for non-atom styles!
       lspkind_text = true,
       style = "atom_colored", -- default/flat_light/flat_dark/atom/atom_colored
+      format_colors = {
+        tailwind = true, -- will work for css lsp too
+        icon = "󱓻",
+      },
     },
 
     telescope = { style = "borderless" }, -- borderless / bordered
@@ -54,42 +57,58 @@ local options = {
       order = { "treeOffset", "buffers", "tabs", "btns" },
       modules = nil,
     },
-
-    nvdash = {
-      load_on_startup = true,
-
-      header = {
-        "                                        ",
-        "⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⣠⣤⣶⣶⣦⣄⣀              ",
-        "⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⢰⣿⣿⣿⣿⣿⣿⣿⣷⣦            ",
-        "⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀   ⠀⢠⣷⣤⠀⠈⠙⢿⣿⣿⣿⣿⣿⣦⡀         ",
-        "⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀   ⠀⣠⣿⣿⣿⠆⠰⠶⠀⠘⢿⣿⣿⣿⣿⣿⣆        ",
-        "⠀⠀⠀⠀⠀⠀  ⠀⠀   ⠀⢀⣼⣿⣿⣿⠏⠀⢀⣠⣤⣤⣀⠙⣿⣿⣿⣿⣿⣷       ",
-        "⠀⠀⠀⠀⠀⠀     ⠀⠀⢠⠋⢈⣉⠉⣡⣤⢰⣿⣿⣿⣿⣿⣷⡈⢿⣿⣿⣿⣿⣷      ",
-        "⠀⠀⠀⠀     ⠀⠀⠀⡴⢡⣾⣿⣿⣷⠋⠁⣿⣿⣿⣿⣿⣿⣿⠃⠀⡻⣿⣿⣿⣿⡇     ",
-        "⠀⠀⠀     ⠀⠀⢀⠜⠁⠸⣿⣿⣿⠟⠀⠀⠘⠿⣿⣿⣿⡿⠋⠰⠖⠱⣽⠟⠋⠉⡇     ",
-        "⠀⠀   ⠀⠀  ⡰⠉⠖⣀⠀⠀⢁⣀⠀⣴⣶⣦⠀⢴⡆⠀⠀⢀⣀⣀⣉⡽⠷⠶⠋      ",
-        "   ⠀  ⠀⠀⡰⢡⣾⣿⣿⣿⡄⠛⠋⠘⣿⣿⡿⠀⠀⣐⣲⣤⣯⠞⠉⠁          ",
-        "     ⠀⢀⠔⠁⣿⣿⣿⣿⣿⡟⠀⠀⠀⢀⣄⣀⡞⠉⠉⠉⠉⠁             ",
-        "⠀     ⡜⠀⠀⠻⣿⣿⠿⣻⣥⣀⡀⢠⡟⠉⠉                   ",
-        "     ⢰⠁⠀⡤⠖⠺⢶⡾⠃⠀⠈⠙⠋                      ",
-        "     ⠈⠓⠾⠇                               ",
-        "                                        ",
-      },
-
-      buttons = {
-        { "  Find File", "Spc f f", "Telescope find_files" },
-        { "  Recent Files", "Spc f o", "Telescope oldfiles" },
-        { "  Find Project", "Spc p p", "Telescope neovim-project discover" },
-        { "  Recent Sessions", "Spc p o", "Telescope neovim-project history" },
-        { "  Find Word", "Spc f w", "Telescope live_grep" },
-        { "  Bookmarks", "Spc m a", "Telescope marks" },
-        { "  Themes", "Spc t h", "Telescope themes" },
-        { "  Mappings", "Spc c h", "NvCheatsheet" },
-      },
-    },
+    -- this is broken on the latest ui update of nvchad
   },
 
+  nvdash = {
+    load_on_startup = true,
+
+    header = {
+      "                                      ",
+      "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⠀⣠⣤⣶⣶⣦⣄⣀              ",
+      " ⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀   ⢰⣿⣿⣿⣿⣿⣿⣿⣷⣦            ",
+      "  ⠀⠀⠀⠀⠀⠀  ⠀   ⠀⢠⣷⣤⠀⠈⠙⢿⣿⣿⣿⣿⣿⣦⡀         ",
+      "⠀  ⠀⠀⠀⠀  ⠀   ⠀⣠⣿⣿⣿⠆⠰⠶⠀⠘⢿⣿⣿⣿⣿⣿⣆        ",
+      "⠀⠀  ⠀⠀     ⠀⢀⣼⣿⣿⣿⠏⠀⢀⣠⣤⣤⣀⠙⣿⣿⣿⣿⣿⣷       ",
+      "⠀⠀       ⠀⠀⢠⠋⢈⣉⠉⣡⣤⢰⣿⣿⣿⣿⣿⣷⡈⢿⣿⣿⣿⣿⣷      ",
+      "       ⠀⠀⠀⡴⢡⣾⣿⣿⣷⠋⠁⣿⣿⣿⣿⣿⣿⣿⠃⠀⡻⣿⣿⣿⣿⡇     ",
+      "      ⠀⠀⢀⠜⠁⠸⣿⣿⣿⠟⠀⠀⠘⠿⣿⣿⣿⡿⠋⠰⠖⠱⣽⠟⠋⠉⡇     ",
+      " ⠀  ⠀  ⡰⠉⠖⣀⠀⠀⢁⣀⠀⣴⣶⣦⠀⢴⡆⠀⠀⢀⣀⣀⣉⡽⠷⠶⠋      ",
+      "    ⠀⠀⡰⢡⣾⣿⣿⣿⡄⠛⠋⠘⣿⣿⡿⠀⠀⣐⣲⣤⣯⠞⠉⠁          ",
+      "   ⠀⢀⠔⠁⣿⣿⣿⣿⣿⡟⠀⠀⠀⢀⣄⣀⡞⠉⠉⠉⠉⠁             ",
+      "    ⡜⠀⠀⠻⣿⣿⠿⣻⣥⣀⡀⢠⡟⠉⠉                   ",
+      "   ⢰⠁⠀⡤⠖⠺⢶⡾⠃⠀⠈⠙⠋                      ",
+      "   ⠈⠓⠾⠇                               ",
+      "                                      ",
+    },
+
+    buttons = {
+      { txt = " ", hl = "NvDashButtons", no_gap = false, rep = true },
+      { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
+      { txt = "  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
+      { txt = "  Find Project", keys = "Spc p p", cmd = "Telescope neovim-project discover" },
+      { txt = "  Recent Sessions", keys = "Spc p o", cmd = "Telescope neovim-project history" },
+      { txt = "  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
+      { txt = "  Bookmarks", keys = "Spc m a", cmd = "Telescope marks" },
+      { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
+      { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
+
+      { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
+
+      {
+        txt = function()
+          local stats = require("lazy").stats()
+          local ms = math.floor(stats.startuptime) .. " ms"
+          return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+        end,
+        hl = "NvDashAscii",
+        no_gap = true,
+      },
+
+      { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
+    },
+  },
+  
   term = {
     winopts = { number = true, relativenumber = true },
     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
@@ -108,6 +127,13 @@ local options = {
   cheatsheet = {
     theme = "grid", -- simple/grid
     excluded_groups = { "terminal (t)", "autopairs", "Nvim", "Opens" }, -- can add group name or with mode
+  },
+
+  colorify = {
+    enabled = true,
+    mode = "virtual", -- fg, bg, virtual
+    virt_text = "󱓻 ",
+    highlight = { hex = true, lspvars = true },
   },
 }
 
