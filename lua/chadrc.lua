@@ -99,7 +99,7 @@ local options = {
         txt = function()
           local stats = require("lazy").stats()
           local ms = math.floor(stats.startuptime) .. " ms"
-          return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
+          return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "  "
         end,
         hl = "NvDashAscii",
         no_gap = true,
