@@ -110,3 +110,8 @@ keymap("n", "<RightMouse>", function()
   local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
   require("menu").open(options, { mouse = true })
 end, { desc = "Open the context menu" })
+
+-- use the new style of the theme picker
+keymap("n", "<leader>th", function ()
+  require("nvchad.themes").open{ style = "compact" }
+end, { desc = "Telescope NvChad themes" })

@@ -99,7 +99,7 @@ local options = {
         txt = function()
           local stats = require("lazy").stats()
           local ms = math.floor(stats.startuptime) .. " ms"
-          return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "  "
+          return "   Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. " "
         end,
         hl = "NvDashAscii",
         no_gap = true,
@@ -108,7 +108,7 @@ local options = {
       { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
     },
   },
-  
+
   term = {
     winopts = { number = true, relativenumber = true },
     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
