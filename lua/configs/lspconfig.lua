@@ -23,6 +23,13 @@ lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
+
+--bash
+lspconfig.bashls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
 -- -- rust analyser disabled due to rustacean vim plugin
 -- lspconfig.rust_analyzer.setup {
 --   on_attach = on_attach,

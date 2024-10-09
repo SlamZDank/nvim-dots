@@ -43,6 +43,9 @@ local options = {
       pkgs = {
         "lua-language-server",
         "stylua",
+        "bash-language-server",
+        "bash-debug-adapter",
+        "shellcheck",
         "codelldb",
         "clang-format",
         "clangd",
