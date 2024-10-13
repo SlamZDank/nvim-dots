@@ -13,7 +13,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "ayu_light", "ayu_dark" },
+    theme_toggle = { "ayu_light", "ayu_light" },
   },
 
   ui = {

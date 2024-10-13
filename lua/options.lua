@@ -51,10 +51,13 @@ for k, v in pairs(options) do
 end
 
 if vim.g.neovide then
+  vim.g.neovide_cursor_animation_length = 0.08
+  vim.g.neovide_scroll_animation_length = 0.25
   vim.g.neovide_transparency = 0.97
   vim.g.neovide_show_border = true
   vim.g.neovide_floating_blur_amount_x = 2.0
   vim.g.neovide_floating_blur_amount_y = 2.0
+  vim.g.neovide_refresh_rate = 165
   vim.g.neovide_floating_shadow = true
   vim.g.neovide_floating_z_height = 10
   vim.g.neovide_light_angle_degrees = 45
