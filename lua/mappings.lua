@@ -5,11 +5,16 @@ require "nvchad.mappings"
 local keymap = vim.keymap.set
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
+
 keymap("i", "jk", "<ESC>")
-keymap("n", "i", "i <BS>") -- workaround for the cmd bar showing upon going into insert mode using i
-keymap("n", "I", "I <BS>") -- workaround for the cmd bar showing upon going into insert mode using I
-keymap("n", "a", "a <BS>") -- workaround for the cmd bar showing upon going into insert mode using a
-keymap("n", "A", "A <BS>") -- workaround for the cmd bar showing upon going into insert mode using A
+keymap("i", "Jk", "<ESC>")
+keymap("i", "jK", "<ESC>")
+keymap("i", "JK", "<ESC>")
+
+keymap("n", "i", "i <BS>")
+keymap("n", "I", "I <BS>")
+keymap("n", "a", "a <BS>")
+keymap("n", "A", "A <BS>")
 
 local opts = { noremap = true, silent = true }
 
