@@ -23,6 +23,13 @@ lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
+-- emmet
+lspconfig.emmet_language_server.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
 -- tailwind
 lspconfig.tailwindcss.setup {
   on_attach = on_attach,

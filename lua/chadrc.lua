@@ -51,6 +51,8 @@ local options = {
         "clangd",
         "rust-analyser",
         "basedpyright",
+        "emmet-language-server",
+        "tailwindcss-language-server",
       },
     },
 
