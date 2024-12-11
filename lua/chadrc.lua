@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "ayu_dark",
+    theme = "radium",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -13,7 +13,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "ayu_light", "ayu_light" },
+    theme_toggle = { "radium", "one_light" },
   },
 
   ui = {
@@ -30,10 +30,10 @@ local options = {
     telescope = { style = "borderless" }, -- borderless / bordered
 
     statusline = {
-      theme = "minimal", -- default/vscode/vscode_colored/minimal
+      theme = "default", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = "round",
+      separator_style = "default",
       order = nil,
       modules = nil,
     },
@@ -64,6 +64,8 @@ local options = {
   },
 
   nvdash = {
+    NvDashAscii = { fg = "#60ffbf", bg = "#161616" },
+    NvDashButtons = { fg = "#ffffff", bg = "#000000" },
     load_on_startup = true,
 
     header = {

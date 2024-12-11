@@ -23,6 +23,12 @@ lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
+-- tailwind
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
 
 --bash
 lspconfig.bashls.setup {

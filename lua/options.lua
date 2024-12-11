@@ -4,7 +4,6 @@ require "nvchad.options"
 
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
-
 local options = {
   backup = false, -- creates a backup file
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
@@ -37,7 +36,7 @@ local options = {
   linebreak = true, -- companion to wrap, don't split words
   scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
-  guifont = "JetBrainsMono Nerd Font:h10", -- the font used in graphical neovim applications such as neovide
+  guifont = "JetBrainsMono Nerd Font:h11", -- the font used in graphical neovim applications such as neovide
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
   foldmethod = 'indent', -- folding method best suited for easily navigating code
   foldlevel = 99, -- do not fold everything by default, it is annoying to deal with 
@@ -53,12 +52,12 @@ end
 if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.08
   vim.g.neovide_scroll_animation_length = 0.25
-  vim.g.neovide_transparency = 0.97
+  vim.g.neovide_transparency = 0.75
   vim.g.neovide_show_border = true
-  vim.g.neovide_floating_blur_amount_x = 2.0
-  vim.g.neovide_floating_blur_amount_y = 2.0
+  vim.g.neovide_floating_blur_amount_x = 0
+  vim.g.neovide_floating_blur_amount_y = 0
   vim.g.neovide_refresh_rate = 165
-  vim.g.neovide_floating_shadow = true
+  vim.g.neovide_floating_shadow = false
   vim.g.neovide_floating_z_height = 10
   vim.g.neovide_light_angle_degrees = 45
   vim.g.neovide_light_radius = 5
