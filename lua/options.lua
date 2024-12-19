@@ -38,8 +38,8 @@ local options = {
   sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
   guifont = "JetBrainsMono Nerd Font:h11", -- the font used in graphical neovim applications such as neovide
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
-  foldmethod = 'indent', -- folding method best suited for easily navigating code
-  foldlevel = 99, -- do not fold everything by default, it is annoying to deal with 
+  foldmethod = "indent", -- folding method best suited for easily navigating code
+  foldlevel = 99, -- do not fold everything by default, it is annoying to deal with
 }
 
 vim.opt.showmode = false
@@ -54,8 +54,8 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.25
   vim.g.neovide_transparency = 0.75
   vim.g.neovide_show_border = true
-  vim.g.neovide_floating_blur_amount_x = 0
-  vim.g.neovide_floating_blur_amount_y = 0
+  vim.g.neovide_floating_blur_amount_x = 5.0
+  vim.g.neovide_floating_blur_amount_y = 5.0
   vim.g.neovide_refresh_rate = 165
   vim.g.neovide_floating_shadow = false
   vim.g.neovide_floating_z_height = 10
