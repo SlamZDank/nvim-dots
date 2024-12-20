@@ -111,19 +111,19 @@ local options = {
       { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
       { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
 
-      { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
+  -- { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
 
-      {
-        txt = function()
-          local stats = require("lazy").stats()
-          local ms = math.floor(stats.startuptime) .. " ms"
-          return "   Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. " "
-        end,
-        hl = "NvDashAscii",
-        no_gap = true,
-      },
-
-      { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
+    --   {
+    --     txt = function()
+    --       local stats = require("lazy").stats()
+    --       local ms = math.floor(stats.startuptime) .. " ms"
+    --       return "   Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. " "
+    --     end,
+    --     hl = "NvDashAscii",
+    --     no_gap = true,
+    --   },
+    --
+    --   { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
     },
   },
 
