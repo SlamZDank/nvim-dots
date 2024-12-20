@@ -17,6 +17,7 @@ return {
 
   keys = {
     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    { "<leader>gp", "<cmd>Telescope lazygit<cr>", desc = "Open Git Projects" },
   },
 
   config = function()
