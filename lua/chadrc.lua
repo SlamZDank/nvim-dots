@@ -128,7 +128,7 @@ local options = {
   },
 
   term = {
-    winopts = { number = true, relativenumber = true },
+    winopts = { number = true, relativenumber = true, winfixbuf = true },
     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
     float = {
       relative = "editor",
