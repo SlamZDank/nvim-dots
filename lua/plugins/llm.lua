@@ -4,7 +4,7 @@ return {
   lazy = false,
   cmd = { "LLMSelectedTextHandler", "LLMAppHandler" },
   config = function()
-    local tools = require "llm.common.tools"
+    local tools = require "llm.tools"
     require("llm").setup {
       prompt = "You are a helpful chinese assistant.",
 
@@ -54,24 +54,6 @@ return {
             model = "qwen2.5-coder:7b",
             api_type = "ollama",
             ------------------- end ollama ------------------
-
-            -------------------------------------------------
-            ---                  deepseek
-            -------------------------------------------------
-            -- url = "https://api.deepseek.com/beta/completions",
-            -- model = "deepseek-chat",
-            -- api_type = "deepseek",
-            -- fetch_key = function()
-            --   return "your api key"
-            -- end,
-            ------------------ end deepseek -----------------
-
-            -------------------------------------------------
-            ---                  codeium
-            ---    dependency: "Exafunction/codeium.nvim"
-            -------------------------------------------------
-            -- api_type = "codeium",
-            ------------------ end codeium ------------------
 
             n_completions = 3,
             context_window = 512,
@@ -125,9 +107,4 @@ return {
       },
     }
   end,
-  keys = {
-    -- { "<leader>ac", mode = "n", "<cmd>LLMSessionToggle<cr>" },
-    -- { "<leader>ae", mode = "v", "<cmd>LLMSelectedTextHandler 请解释下面这段代码<cr>" },
-    -- { "<leader>t", mode = "x", "<cmd>LLMSelectedTextHandler 英译汉<cr>" },
-  },
 }
