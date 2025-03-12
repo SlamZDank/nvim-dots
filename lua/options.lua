@@ -50,11 +50,11 @@ for k, v in pairs(options) do
 end
 
 if vim.g.neovide then
-  vim.g.neovide_cursor_animation_length = 0.08
-  vim.g.neovide_scroll_animation_length = 0.25
-  vim.g.neovide_cursor_trail=1.8 -- this is a good way to have some transparency effect
-  vim.g.neovide_transparency=0.75 -- make it full transparent
-  vim.g.neovide_underline_termcolors=false -- this makes the underlining of strings look much better
+  vim.g.neovide_cursor_animation_length = 0.04
+  vim.g.neovide_scroll_animation_length = 0.04
+  vim.g.neovide_cursor_trail= 1.8 -- this is a good way to have some transparency effect
+  vim.g.neovide_transparency= 0.86 -- make it full transparent
+  vim.g.neovide_underline_termcolors= false -- this makes the underlining of strings look much better
   vim.g.neovide_floating_blur_amount_x = 6.0
   vim.g.neovide_floating_blur_amount_y = 6.0
   vim.g.neovide_refresh_rate = 165

@@ -8,6 +8,7 @@ return {
         dotfiles = false,
       },
       view = {
+        side = "left",
         number = true,
         relativenumber = true,
         centralize_selection = true,
