@@ -5,6 +5,7 @@ return {
     lazy = false,
     opts = {
       filters = {
+        git_ignored = false,
         dotfiles = false,
       },
       view = {

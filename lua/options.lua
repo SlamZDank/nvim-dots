@@ -36,7 +36,7 @@ local options = {
   linebreak = true, -- companion to wrap, don't split words
   scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
-  guifont = "JetBrainsMono Nerd Font:h11", -- the font used in graphical neovim applications such as neovide
+  guifont = "JetBrainsMono Nerd Font:h10", -- the font used in graphical neovim applications such as neovide
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
   foldmethod = "indent", -- folding method best suited for easily navigating code
   foldlevel = 99, -- do not fold everything by default, it is annoying to deal with
@@ -50,13 +50,13 @@ for k, v in pairs(options) do
 end
 
 if vim.g.neovide then
-  vim.g.neovide_cursor_animation_length = 0.04
-  vim.g.neovide_scroll_animation_length = 0.04
-  vim.g.neovide_cursor_trail= 1.8 -- this is a good way to have some transparency effect
-  vim.g.neovide_transparency= 0.86 -- make it full transparent
-  vim.g.neovide_underline_termcolors= false -- this makes the underlining of strings look much better
+  vim.g.neovide_opacity = 1
   vim.g.neovide_floating_blur_amount_x = 6.0
+  vim.g.neovide_cursor_animation_length = 0.2
+  vim.g.neovide_scroll_animation_length = 0.2
+  vim.g.neovide_cursor_trail = 1.8
   vim.g.neovide_floating_blur_amount_y = 6.0
+  vim.g.neovide_underline_termcolors = false -- this makes the underlining of strings look much better
   vim.g.neovide_refresh_rate = 165
   vim.g.neovide_floating_shadow = false
   vim.g.neovide_floating_z_height = 10

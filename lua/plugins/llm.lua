@@ -2,6 +2,7 @@ return {
   "Kurama622/llm.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
   lazy = false,
+  enabled = false,
   cmd = { "LLMSelectedTextHandler", "LLMAppHandler" },
   config = function()
     local tools = require "llm.tools"
