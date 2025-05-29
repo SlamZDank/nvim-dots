@@ -8,9 +8,12 @@ return {
           enabled = true,
         },
       },
-    }
-    require("cmp").setup.buffer {
-      sources = { { name = "crates" } },
+      lsp = {
+        enabled = true,
+        on_attach = require("nvchad.configs.lspconfig").on_attach,
+        completion = true,
+        actions = true,
+      },
     }
   end,
 }
