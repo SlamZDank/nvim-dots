@@ -5,7 +5,7 @@ return {
       "saghen/blink.cmp",
       -- optional: provides snippets for the snippet source
       dependencies = { "rafamadriz/friendly-snippets" },
-
+      build = 'cargo +nightly build --release',
       --@module 'blink.cmp'
       --@type blink.cmp.Config
       opts = {

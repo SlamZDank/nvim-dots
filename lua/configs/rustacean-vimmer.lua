@@ -18,7 +18,11 @@ vim.g.rustaceanvim = {
           allFeatures = true,
         },
         checkOnSave = {
+          enable = false,
           command = "clippy",
+        },
+        diagnostics = {
+          enable = false,
         },
       },
     },

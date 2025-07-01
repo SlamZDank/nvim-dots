@@ -11,7 +11,7 @@ return {
       projects = {
         "~/",
         "~/projects/*",
-        "~/dev/*",
+        "~/Developer/*",
         "~/.config/*",
       },
       -- Path to store history and sessions
