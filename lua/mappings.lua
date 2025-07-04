@@ -15,6 +15,9 @@ keymap("n", "i", "i <BS>")
 keymap("n", "I", "I <BS>")
 keymap("n", "a", "a <BS>")
 keymap("n", "A", "A <BS>")
+keymap("i", "<Tab>", "<Tab>", { noremap = true })
+
+keymap('x', 'y', 'ygv', { noremap = true, silent = true })
 
 local opts = { noremap = true, silent = true }
 
@@ -88,15 +91,15 @@ keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
 keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
 
 -- window management
-keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap("n", "<leader>so", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })                         -- split window vertically
+keymap("n", "<leader>so", "<C-w>s", { desc = "Split window horizontally" })                       -- split window horizontally
+keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })                          -- make split windows equal width & height
+keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })                     -- close current split window
 
-keymap("n", "<leader>wo", "<cmd>tabnew<CR>", { desc = "Open new workspace" }) -- open new tab
-keymap("n", "<leader>wx", "<cmd>tabclose<CR>", { desc = "Close current workspace" }) -- close current tab
-keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" }) --  go to next tab
-keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" }) --  go to previous tab
+keymap("n", "<leader>wo", "<cmd>tabnew<CR>", { desc = "Open new workspace" })                     -- open new tab
+keymap("n", "<leader>wx", "<cmd>tabclose<CR>", { desc = "Close current workspace" })              -- close current tab
+keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" })                     --  go to next tab
+keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" })                 --  go to previous tab
 keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new workspace" }) --  move current buffer to new tab
 keymap('n', '<space>we', function()
   vim.diagnostic.open_float(0, { scope = 'line' })
@@ -120,6 +123,6 @@ keymap("n", "<RightMouse>", function()
 end, { desc = "Open the context menu" })
 
 -- use the new style of the theme picker
-keymap("n", "<leader>th", function ()
-  require("nvchad.themes").open{ style = "compact" }
+keymap("n", "<leader>th", function()
+  require("nvchad.themes").open { style = "compact" }
 end, { desc = "Telescope NvChad themes" })
