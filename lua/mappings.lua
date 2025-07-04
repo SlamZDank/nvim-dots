@@ -13,11 +13,10 @@ keymap("i", "JK", "<ESC>")
 
 keymap("n", "i", "i <BS>")
 keymap("n", "I", "I <BS>")
-keymap("n", "a", "a <BS>")
 keymap("n", "A", "A <BS>")
-keymap("i", "<Tab>", "<Tab>", { noremap = true })
-
+keymap("n", "a", "a <BS>")
 keymap('x', 'y', 'ygv', { noremap = true, silent = true })
+
 
 local opts = { noremap = true, silent = true }
 
