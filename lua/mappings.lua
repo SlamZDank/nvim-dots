@@ -6,15 +6,16 @@ local keymap = vim.keymap.set
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
 
-keymap("i", "jk", "<ESC>")
-keymap("i", "Jk", "<ESC>")
-keymap("i", "jK", "<ESC>")
-keymap("i", "JK", "<ESC>")
+-- keymap("i", "jk", "<ESC>")
+-- keymap("i", "Jk", "<ESC>")
+-- keymap("i", "jK", "<ESC>")
+-- keymap("i", "JK", "<ESC>")
 
-keymap("n", "i", "i <BS>")
-keymap("n", "I", "I <BS>")
-keymap("n", "A", "A <BS>")
-keymap("n", "a", "a <BS>")
+-- keymap("n", "i", "i <BS>")
+-- keymap("n", "I", "I <BS>")
+-- keymap("n", "A", "A <BS>")
+-- keymap("n", "a", "a <BS>")
+
 keymap('x', 'y', 'ygv', { noremap = true, silent = true })
 
 
