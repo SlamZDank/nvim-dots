@@ -16,7 +16,25 @@ keymap("n", ";", ":", { desc = "CMD enter command mode" })
 -- keymap("n", "A", "A <BS>")
 -- keymap("n", "a", "a <BS>")
 
-keymap('x', 'y', 'ygv', { noremap = true, silent = true })
+
+local keys = {'i', 'I', 'a', 'A' }
+
+-- so it auto indents the upon finding an empty line
+for _, key in ipairs(keys) do
+  keymap('n', key, function()
+    local line = vim.api.nvim_get_current_line()
+    if string.match(line, '%g') == nil
+      and vim.bo.buftype ~= "nofile"   -- Blocks Telescope/popups
+      and vim.bo.buftype ~= "prompt"   -- Blocks command prompts
+      and vim.bo.buftype ~= "terminal" -- Blocks terminals
+    then
+      return 'cc'
+    else
+      return key
+    end
+  end, {expr = true, noremap = true})
+end
+
 
 
 local opts = { noremap = true, silent = true }

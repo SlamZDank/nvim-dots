@@ -11,20 +11,25 @@ return {
     local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
     local cfg = require "rustaceanvim.config"
 
-    vim.g.lazyvim_rust_diagnostics = "bacon-ls"
-
     vim.g.rustaceanvim = {
       dap = {
         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
       },
       server = {
+        on_attach = function (client, bufnr)
+          require("nvchad.configs.lspconfig").on_attach(client, bufnr)
+          vim.diagnostic.config({
+            virtual_text = false,
+          })
+        end,
+
         default_settings = {
           ['rust-analyzer'] = {
             checkOnSave = {
-              enable = false,
+              enable = true,
             },
             diagnostics = {
-              enable = false,
+              enable = true,
             },
           },
         },

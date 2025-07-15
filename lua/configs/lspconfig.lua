@@ -1,8 +1,17 @@
 -- EXAMPLE
 
-local on_attach = require("nvchad.configs.lspconfig").on_attach
+local default_on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
+
+-- remove diagnostic virtual text 
+local on_attach = function(client, bufnr)
+  default_on_attach(client, bufnr)
+
+  vim.diagnostic.config({
+    virtual_text = false,
+  })
+end
 
 local lspconfig = require "lspconfig"
 local servers = { "html", "cssls" }
@@ -97,12 +106,4 @@ lspconfig.basedpyright.setup {
       },
     },
   },
-}
-
-
--- rust
-lspconfig.bacon_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "rust" },
 }
