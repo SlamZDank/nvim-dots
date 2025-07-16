@@ -35,7 +35,7 @@ for _, key in ipairs(keys) do
   end, {expr = true, noremap = true})
 end
 
-
+keymap('v', 'y', 'y<Esc>gv', { noremap = true })
 
 local opts = { noremap = true, silent = true }
 
