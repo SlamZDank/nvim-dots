@@ -56,7 +56,7 @@ local options = {
 
     tabufline = {
       enabled = true,
-      lazyload = false,
+      lazyload = true,
       order = { "treeOffset", "buffers", "tabs" },
       modules = nil,
     },
