@@ -32,6 +32,13 @@ lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
+-- lua 
+lspconfig.lua_ls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
 -- emmet
 lspconfig.emmet_language_server.setup {
   on_attach = on_attach,

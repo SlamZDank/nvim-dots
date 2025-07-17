@@ -30,12 +30,10 @@ local options = {
     telescope = { style = "borderless" }, -- borderless / bordered
 
     statusline = {
-      theme = "default", -- default/vscode/vscode_colored/minimal
+      theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = "round",
-      order = nil,
-      modules = nil,
+      separator_style = "default",
     },
 
     mason = {
@@ -58,8 +56,8 @@ local options = {
 
     tabufline = {
       enabled = true,
-      lazyload = true,
-      order = { "treeOffset", "buffers", "tabs", "btns" },
+      lazyload = false,
+      order = { "treeOffset", "buffers", "tabs" },
       modules = nil,
     },
     -- this is broken on the latest ui update of nvchad
@@ -102,19 +100,6 @@ local options = {
       { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
       { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
 
-  -- { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
-
-    --   {
-    --     txt = function()
-    --       local stats = require("lazy").stats()
-    --       local ms = math.floor(stats.startuptime) .. " ms"
-    --       return "   Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. " "
-    --     end,
-    --     hl = "NvDashAscii",
-    --     no_gap = true,
-    --   },
-    --
-    --   { txt = " ", hl = "NvDashAscii", no_gap = true, rep = true },
     },
   },
 

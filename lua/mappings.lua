@@ -1,44 +1,12 @@
 require "nvchad.mappings"
 
--- add yours here
-
 local keymap = vim.keymap.set
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
 
--- keymap("i", "jk", "<ESC>")
--- keymap("i", "Jk", "<ESC>")
--- keymap("i", "jK", "<ESC>")
--- keymap("i", "JK", "<ESC>")
-
--- keymap("n", "i", "i <BS>")
--- keymap("n", "I", "I <BS>")
--- keymap("n", "A", "A <BS>")
--- keymap("n", "a", "a <BS>")
-
-
-local keys = {'i', 'I', 'a', 'A' }
-
--- so it auto indents the upon finding an empty line
-for _, key in ipairs(keys) do
-  keymap('n', key, function()
-    local line = vim.api.nvim_get_current_line()
-    if string.match(line, '%g') == nil
-      and vim.bo.buftype ~= "nofile"   -- Blocks Telescope/popups
-      and vim.bo.buftype ~= "prompt"   -- Blocks command prompts
-      and vim.bo.buftype ~= "terminal" -- Blocks terminals
-    then
-      return 'cc'
-    else
-      return key
-    end
-  end, {expr = true, noremap = true})
-end
-
-keymap('v', 'y', 'y<Esc>gv', { noremap = true })
+local keys = { 'i', 'I', 'a', 'A' }
 
 local opts = { noremap = true, silent = true }
-
 local term_opts = { silent = true }
 
 -- Modes
@@ -58,6 +26,7 @@ keymap(
   "<cmd>lua vim.lsp.buf.code_action()<CR>",
   { desc = "Code Action", noremap = true, silent = true }
 )
+
 keymap("n", "<C-h>", "<C-w>h", { desc = "Switch to the window on the left " })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Switch to the window on the bottom" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
@@ -86,28 +55,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize windows to 
 keymap("n", "<A-j>", ":m .+1<CR>==", { desc = "Move text up" })
 keymap("n", "<A-k>", ":m .-2<CR>==", { desc = "Move text down" })
 
--- Insert --
--- Press jk fast to exit insert mode
-keymap("i", "jk", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "kj", "<ESC>", { desc = "Exit insert mode" })
-
--- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv^", { desc = "Stay in indent mode" })
-keymap("v", ">", ">gv^", { desc = "Stay in indent mode" })
-
--- Move text up and down
-keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
-keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
-keymap("v", "p", '"_dP', { desc = "Split window vertically" })
-
--- Visual Block --
--- Move text up and down
-keymap("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
-keymap("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
-keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
-keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
-
 -- window management
 keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })                         -- split window vertically
 keymap("n", "<leader>so", "<C-w>s", { desc = "Split window horizontally" })                       -- split window horizontally
@@ -119,13 +66,11 @@ keymap("n", "<leader>wx", "<cmd>tabclose<CR>", { desc = "Close current workspace
 keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" })                     --  go to next tab
 keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" })                 --  go to previous tab
 keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new workspace" }) --  move current buffer to new tab
-keymap('n', '<space>we', function()
-  vim.diagnostic.open_float(0, { scope = 'line' })
-end, { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
-
 keymap("n", "q", "", {})
--- keymap("n", "<leader>tn", "<Tab>", { desc = "Go to next tab" }) --  go to next tab
--- keymap("n", "<leader>tp", "<S-Tab>", { desc = "Go to previous workspace" }) --  go to previous tab
+
+-- diagnostic window
+keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line' }) end,
+  { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
 
 -- add minty and menu and remove the default context menu and color meny
 keymap("n", "<leader>rm", function()
@@ -144,3 +89,65 @@ end, { desc = "Open the context menu" })
 keymap("n", "<leader>th", function()
   require("nvchad.themes").open { style = "compact" }
 end, { desc = "Telescope NvChad themes" })
+
+-- diagnostic window
+keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line' }) end,
+  { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
+
+-- add minty and menu and remove the default context menu and color meny
+keymap("n", "<leader>rm", function()
+  require("menu").open "default"
+end, { desc = "Open the context menu" })
+
+-- mouse users + nvimtree users!
+keymap("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, { desc = "Open the context menu" })
+
+-- use the new style of the theme picker
+keymap("n", "<leader>th", function()
+  require("nvchad.themes").open { style = "compact" }
+end, { desc = "Telescope NvChad themes" })
+
+-- so it auto indents the upon finding an empty line
+for _, key in ipairs(keys) do
+  keymap('n', key, function()
+    local line = vim.api.nvim_get_current_line()
+    if string.match(line, '%g') == nil
+        and vim.bo.buftype ~= "nofile"   -- Blocks Telescope/popups
+        and vim.bo.buftype ~= "prompt"   -- Blocks command prompts
+        and vim.bo.buftype ~= "terminal" -- Blocks terminals
+    then
+      return 'cc'
+    else
+      return key
+    end
+  end, { expr = true, noremap = true })
+end
+
+-- Insert --
+-- Press jk fast to exit insert mode
+keymap("i", "jk", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "kj", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "Jk", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "jK", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "kJ", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "Kj", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "KJ", "<ESC>", { desc = "Exit insert mode" })
+keymap("i", "JK", "<ESC>", { desc = "Exit insert mode" })
+
+-- Visual --
+-- Stay in indent mode
+keymap("v", "<", "<gv^", { desc = "Stay in indent mode" })
+keymap("v", ">", ">gv^", { desc = "Stay in indent mode" })
+keymap('v', 'y', 'ygv', { noremap = true, silent = true })
+
+-- Visual Block --
+-- Move text up and down
+keymap("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
+keymap("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
+keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
+keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move text up" })
