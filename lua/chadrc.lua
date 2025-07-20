@@ -1,6 +1,6 @@
 local options = {
   base46 = {
-    theme = "radium",
+    theme = "rosepine",
     hl_add = {},
     hl_override = {
       Comment = { italic = true },
@@ -13,7 +13,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "radium", "one_light" },
+    theme_toggle = { "rosepine", "one_light" },
   },
 
   ui = {
@@ -33,7 +33,7 @@ local options = {
       theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = "default",
+      separator_style = "block",
     },
 
     mason = {
@@ -66,7 +66,7 @@ local options = {
   nvdash = {
     NvDashAscii = { fg = "#60ffbf", bg = "#161616" },
     NvDashButtons = { fg = "#ffffff", bg = "#000000" },
-    load_on_startup = true,
+    load_on_startup = false,
 
     header = {
       "                                                  ",
@@ -99,7 +99,6 @@ local options = {
       { txt = "  Bookmarks", keys = "Spc m a", cmd = "Telescope marks" },
       { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
       { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
-
     },
   },
 

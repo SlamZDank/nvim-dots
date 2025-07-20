@@ -17,7 +17,7 @@ return {
       -- Path to store history and sessions
       datapath = vim.fn.stdpath "data", -- ~/.local/share/nvim/
       -- Load the most recent session on startup if not in the project directory
-      last_session_on_startup = false,
+      last_session_on_startup = true,
       -- Dashboard mode prevent session autoload on startup
       dashboard_mode = false,
       -- Timeout in milliseconds before trigger FileType autocmd after session load
@@ -51,6 +51,7 @@ return {
       { desc = "Search recently opened projects" }
     ) -- Open a list of projects
   end,
+
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },

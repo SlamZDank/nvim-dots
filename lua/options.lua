@@ -35,12 +35,11 @@ local options = {
   linebreak = true, -- companion to wrap, don't split words
   scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor
   sidescrolloff = 8, -- minimal number of screen columns either side of cursor if wrap is `false`
-  guifont = "JetBrainsMono Nerd Font:h11", -- the font used in graphical neovim applications such as neovide
+  guifont = "JetBrainsMono Nerd Font:h12", -- the font used in graphical neovim applications such as neovide
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
   foldmethod = "indent", -- folding method best suited for easily navigating code
   foldlevel = 99, -- do not fold everything by default, it is annoying to deal with
 }
-
 
 -- set all the oprions in the table above
 for k, v in pairs(options) do
@@ -48,15 +47,16 @@ for k, v in pairs(options) do
 end
 
 if vim.g.neovide then
-  vim.g.neovide_opacity = 1
-  vim.g.neovide_floating_blur_amount_x = 6.0
+  vim.g.neovide_opacity = 0.9
+  vim.g.neovide_refresh_rate_idle = 5
+  vim.g.neovide_floating_blur_amount_x = 1.0
+  vim.g.neovide_floating_blur_amount_y = 1.0
   vim.g.neovide_cursor_animation_length = 0.2
   vim.g.neovide_scroll_animation_length = 0.2
   vim.g.neovide_cursor_trail = 1.8
-  vim.g.neovide_floating_blur_amount_y = 6.0
   vim.g.neovide_underline_termcolors = false -- this makes the underlining of strings look much better
   vim.g.neovide_refresh_rate = 165
-  vim.g.neovide_floating_shadow = false
+  vim.g.neovide_floating_shadow = true
   vim.g.neovide_floating_z_height = 10
   vim.g.neovide_light_angle_degrees = 45
   vim.g.neovide_light_radius = 5
@@ -72,4 +72,4 @@ vim.notify = function() end
 
 vim.api.nvim_command [[aunmenu PopUp.How-to\ disable\ mouse]]
 vim.api.nvim_command [[aunmenu PopUp.-1-]]
-vim.cmd('highlight MsgArea guibg=#171B21 gui=bold guisp=NONE')
+-- vim.cmd('highlight MsgArea guibg=#171B21 gui=bold guisp=NONE')
