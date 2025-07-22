@@ -59,7 +59,15 @@ lspconfig.bashls.setup {
   on_init = on_init,
   capabilities = capabilities,
 }
--- -- rust analyser disabled due to rustacean vim plugin
+
+--ruby
+lspconfig.solargraph.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
+-- -- rust analyser: disabled due to rustacean vim plugin
 -- lspconfig.rust_analyzer.setup {
 --   on_attach = on_attach,
 --   capabilities = capabilities,

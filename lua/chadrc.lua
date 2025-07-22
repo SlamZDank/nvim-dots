@@ -13,7 +13,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { "rosepine", "one_light" },
+    theme_toggle = { "rosepine", "rosepine-dawn" },
   },
 
   ui = {

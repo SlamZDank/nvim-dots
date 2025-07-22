@@ -49,8 +49,8 @@ end
 if vim.g.neovide then
   vim.g.neovide_opacity = 0.9
   vim.g.neovide_refresh_rate_idle = 5
-  vim.g.neovide_floating_blur_amount_x = 1.0
-  vim.g.neovide_floating_blur_amount_y = 1.0
+  vim.g.neovide_floating_blur_amount_x = 5.0
+  vim.g.neovide_floating_blur_amount_y = 5.0
   vim.g.neovide_cursor_animation_length = 0.2
   vim.g.neovide_scroll_animation_length = 0.2
   vim.g.neovide_cursor_trail = 1.8
