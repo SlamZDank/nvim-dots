@@ -37,7 +37,6 @@ local options = {
     },
 
     mason = {
-      cmd = true,
       pkgs = {
         "lua-language-server",
         "stylua",
