@@ -66,7 +66,9 @@ keymap("n", "<leader>wx", "<cmd>tabclose<CR>", { desc = "Close current workspace
 keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" })                     --  go to next tab
 keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" })                 --  go to previous tab
 keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new workspace" }) --  move current buffer to new tab
-keymap("n", "q", "", {})
+
+-- disable macros, (wtf were you thinking SlamZDank!)
+-- keymap("n", "q", "", {})
 
 -- diagnostic window
 keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line' }) end,
