@@ -39,8 +39,9 @@ local options = {
   whichwrap = "bs<>[]hl", -- which "horizontal" keys are allowed to travel to prev/next line
   foldmethod = "indent", -- folding method best suited for easily navigating code
   foldlevel = 99, -- do not fold everything by default, it is annoying to deal with
+  timeoutlen = 250, -- reduce the delay for in between keypresses.
 }
-
+--
 -- set all the oprions in the table above
 for k, v in pairs(options) do
   vim.opt[k] = v

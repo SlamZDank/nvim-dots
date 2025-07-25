@@ -35,6 +35,10 @@ return {
       keywords[key:lower()] = val
     end
 
+    vim.keymap.set("n", "<leader>tt", ":TodoTelescope<CR>", {
+      desc = "Check Todos",
+    })
+
     require("todo-comments").setup({
       keywords = keywords,
     })

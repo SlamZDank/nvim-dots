@@ -29,7 +29,7 @@ return {
           ['<Tab>'] = false,
           ['<S-Tab>'] = false,
           ['<A-j>'] = { 'select_next', 'fallback' },
-          ['q'] = {'hide', 'fallback'},
+          -- ['q'] = {'hide', 'fallback'},
           ['<C-u>'] = { 'scroll_documentation_up' },
           ['<A-k>'] = { 'select_prev', 'fallback' },
           ['<C-d>'] = { 'scroll_documentation_down' },
