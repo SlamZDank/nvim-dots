@@ -3,8 +3,6 @@ return {
   event = "BufEnter",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
-    -- Default keywords
-    -- @see https://github.com/folke/todo-comments.nvim/blob/main/lua/todo-comments/config.lua
     local default_keywords = {
       FIX = {
         icon = " ", -- icon used for the sign, and in search results
