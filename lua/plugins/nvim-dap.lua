@@ -11,7 +11,6 @@ return {
 
       keymap("n", "<Leader>dt", dap.toggle_breakpoint, { desc = "Toggle Debugger Breakpoint" })
       keymap("n", "<Leader>do", dap.continue, { desc = "Start or continue the Debugger" })
-      keymap("n", "<Leader>dr", dap.repl.open, { desc = "Inspect the Element" })
       keymap("n", "<Leader>dx", dap.terminate, { desc = "Kill the Debugger" })
 
       keymap("n", "<Leader>dso", dap.step_over, { desc = "Step Over" })
