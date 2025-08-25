@@ -34,10 +34,11 @@ dofile(vim.g.base46_cache .. "statusline")
 
 vim.opt.termguicolors = true
 
+require("configs.dapconfig")
+require("custom.lsp_popup")
+
 require "nvchad.autocmds"
 
 vim.schedule(function()
   require "mappings"
 end)
-
-require("custom.lsp")

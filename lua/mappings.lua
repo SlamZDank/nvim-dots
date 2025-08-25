@@ -1,6 +1,7 @@
 require "nvchad.mappings"
 
 local keymap = vim.keymap.set
+local remove = vim.keymap.del
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -17,6 +18,9 @@ local term_opts = { silent = true }
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Remove some keybinds defined by the Distro
+remove("n", "<leader>ds")
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle the Nvim Tree" })
@@ -31,12 +35,6 @@ keymap("n", "<C-h>", "<C-w>h", { desc = "Switch to the window on the left " })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Switch to the window on the bottom" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Switch to the window on the right" })
-
--- DAP support
-keymap("n", "<Leader>db", ":DapToggleBreakpoint<CR>", { desc = "Toggle debugger breakpoint" })
-keymap("n", "<Leader>dr", ":DapContinue<CR>", { desc = "Start or continue the debugger" })
-keymap("n", "<Leader>dx", ":DapTerminate<CR>", { desc = "Terminate debugger" })
-keymap("n", "<Leader>do", ":DapStepOver<CR>", { desc = "Debugger step over" })
 
 -- Clear search highlights
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -73,6 +71,12 @@ keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in 
 -- diagnostic window
 keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line' }) end,
   { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
+
+-- diagnostic list of errors
+keymap("n", "<leader>el", function()
+  vim.diagnostic.setloclist()
+end, { desc = "Show LSP diagnostics in loclist" })
+
 
 -- add minty and menu and remove the default context menu and color meny
 keymap("n", "<leader>rm", function()

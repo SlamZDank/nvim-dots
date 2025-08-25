@@ -1,5 +1,3 @@
--- EXAMPLE
-
 local default_on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -104,6 +102,7 @@ lspconfig.clangd.setup {
     "--pch-storage=memory",
   },
 }
+
 
 -- python
 lspconfig.basedpyright.setup {
