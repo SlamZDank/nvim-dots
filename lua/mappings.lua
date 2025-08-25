@@ -20,6 +20,7 @@ local term_opts = { silent = true }
 
 -- Remove some keybinds defined by the Distro
 remove("n", "<leader>ds")
+remove("n", "<leader>n")
 
 -- Normal --
 -- Better window navigation
