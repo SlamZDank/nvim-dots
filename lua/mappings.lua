@@ -74,7 +74,7 @@ keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line
   { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
 
 -- diagnostic list of errors
-keymap("n", "<leader>el", function()
+keymap("n", "<leader>ll", function()
   vim.diagnostic.setloclist()
 end, { desc = "Show LSP diagnostics in loclist" })
 
