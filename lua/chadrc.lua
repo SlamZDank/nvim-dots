@@ -5,8 +5,9 @@ local options = {
     hl_override = {
       Comment = { italic = true },
       ["@comment"] = { italic = true },
-      NvDashAscii = { fg = "#60ffbf", bg = "#000000" },
-      NvDashButtons = { fg = "#ffffff", bg = "#000000" },
+      -- NvDashAscii = { fg = "#60ffbf", bg = "#000000" },
+      -- NvDashButtons = { fg = "#ffffff", bg = "#000000" },
+      NvDashButtons = { fg = "#ffffff" },
       TblineFill = {},
       NvimTreeRootFolder = { link = "NvimTreeFolderName" },
     },
@@ -30,10 +31,10 @@ local options = {
     telescope = { style = "borderless" }, -- borderless / bordered
 
     statusline = {
-      theme = "vscode_colored", -- default/vscode/vscode_colored/minimal
+      theme = "default", -- default/vscode/vscode_colored/minimal
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
-      separator_style = "block",
+      separator_style = "default",
     },
 
     mason = {
@@ -63,7 +64,7 @@ local options = {
   },
 
   nvdash = {
-    load_on_startup = false,
+    load_on_startup = true,
 
     header = {
       "                                                  ",

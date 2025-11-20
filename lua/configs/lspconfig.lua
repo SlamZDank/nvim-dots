@@ -65,8 +65,22 @@ lspconfig.bashls.setup {
   capabilities = capabilities,
 }
 
---ruby
+-- ruby
 lspconfig.solargraph.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
+-- sql
+lspconfig.postgres_lsp.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
+lspconfig.sqls.setup {
+
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
