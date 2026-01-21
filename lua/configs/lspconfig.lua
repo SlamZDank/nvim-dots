@@ -2,7 +2,7 @@ local default_on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
--- remove diagnostic virtual text 
+-- remove diagnostic virtual text
 local on_attach = function(client, bufnr)
   default_on_attach(client, bufnr)
 
@@ -30,7 +30,7 @@ lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
--- lua 
+-- lua
 lspconfig.lua_ls.setup {
   on_attach = on_attach,
   on_init = on_init,
@@ -66,11 +66,11 @@ lspconfig.bashls.setup {
 }
 
 -- ruby
-lspconfig.solargraph.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
+-- lspconfig.solargraph.setup {
+--   on_attach = on_attach,
+--   on_init = on_init,
+--   capabilities = capabilities,
+-- }
 
 -- sql
 lspconfig.postgres_lsp.setup {
@@ -80,15 +80,20 @@ lspconfig.postgres_lsp.setup {
 }
 
 lspconfig.sqls.setup {
-
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
 }
 
--- -- rust analyser: disabled due to rustacean vim plugin
--- lspconfig.rust_analyzer.setup {
+-- lspconfig.phpactor.setup {
 --   on_attach = on_attach,
+--   on_init = on_init,
+--   capabilities = capabilities,
+-- }
+
+-- rust analyser: disabled due to rustacean vim plugin
+-- lspconfig.rust_analyzer.setup {
+-- on_attach = on_attach,
 --   capabilities = capabilities,
 --   filetypes = { "rust" },
 --   settings = {

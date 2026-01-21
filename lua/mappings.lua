@@ -136,15 +136,7 @@ for _, key in ipairs(keys) do
 end
 
 -- Insert --
--- Press jk fast to exit insert mode
-keymap("i", "jk", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "kj", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "Jk", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "jK", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "kJ", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "Kj", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "KJ", "<ESC>", { desc = "Exit insert mode" })
-keymap("i", "JK", "<ESC>", { desc = "Exit insert mode" })
+-- Kde is the goat, caps lock is now escape
 
 -- Visual --
 -- Stay in indent mode
