@@ -30,6 +30,12 @@ lspconfig.ts_ls.setup {
   capabilities = capabilities,
 }
 
+lspconfig.eslint.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
+
 -- lua
 lspconfig.lua_ls.setup {
   on_attach = on_attach,
