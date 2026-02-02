@@ -9,7 +9,8 @@ return {
         dotfiles = false,
       },
       view = {
-        side = "left",
+        side = "right",
+        width = 40,
         number = true,
         relativenumber = true,
         centralize_selection = true,

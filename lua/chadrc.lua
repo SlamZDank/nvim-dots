@@ -57,14 +57,14 @@ local options = {
     tabufline = {
       enabled = true,
       lazyload = true,
-      order = { "treeOffset", "buffers", "tabs" },
+      order = { "buffers", "tabs", "treeOffset" },
       modules = nil,
     },
     -- this is broken on the latest ui update of nvchad
   },
 
   nvdash = {
-    load_on_startup = true,
+    load_on_startup = false,
 
     header = {
       "                                                  ",
