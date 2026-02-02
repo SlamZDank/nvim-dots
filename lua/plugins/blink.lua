@@ -3,9 +3,8 @@ return {
   {
     {
       "saghen/blink.cmp",
-      -- optional: provides snippets for the snippet source
       dependencies = { "rafamadriz/friendly-snippets" },
-      build = 'cargo +nightly build --release',
+      build = "cargo +nightly build --release",
       --@module 'blink.cmp'
       --@type blink.cmp.Config
       opts = {
@@ -26,13 +25,13 @@ return {
         },
 
         keymap = {
-          ['<Tab>'] = false,
-          ['<S-Tab>'] = false,
-          ['<A-j>'] = { 'select_next', 'fallback' },
+          ["<Tab>"] = false,
+          ["<S-Tab>"] = false,
+          ["<A-j>"] = { "select_next", "fallback" },
           -- ['q'] = {'hide', 'fallback'},
-          ['<C-u>'] = { 'scroll_documentation_up' },
-          ['<A-k>'] = { 'select_prev', 'fallback' },
-          ['<C-d>'] = { 'scroll_documentation_down' },
+          ["<C-u>"] = { "scroll_documentation_up" },
+          ["<A-k>"] = { "select_prev", "fallback" },
+          ["<C-d>"] = { "scroll_documentation_down" },
         },
 
         -- (Default) Only show the documentation popup when manually triggered
@@ -43,13 +42,21 @@ return {
           documentation = {
             auto_show = true,
             auto_show_delay_ms = 500,
-          }
+          },
+          list = {
+            max_items = 50, -- limit completion items for performance
+          },
+          trigger = {
+            show_in_snippet = false, -- don't show completion while in snippet
+          },
         },
 
         sources = {
           default = { "lsp", "path", "snippets", "buffer" },
+          per_filetype = {
+            markdown = { "buffer", "path" }, -- no LSP spam in markdown
+          },
         },
-
 
         fuzzy = { implementation = "prefer_rust_with_warning" },
       },

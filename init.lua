@@ -34,8 +34,11 @@ dofile(vim.g.base46_cache .. "statusline")
 
 vim.opt.termguicolors = true
 
-require("configs.dapconfig")
-require("custom.lsp_popup")
+-- defer non-critical loads for faster startup
+vim.defer_fn(function()
+  require("configs.dapconfig")
+  require("custom.lsp_popup")
+end, 50)
 
 require "nvchad.autocmds"
 
