@@ -40,6 +40,11 @@ local options = {
   foldmethod = "indent", -- folding method best suited for easily navigating code
   foldlevel = 99, -- do not fold everything by default, it is annoying to deal with
   timeoutlen = 250, -- reduce the delay for in between keypresses.
+  -- Performance optimizations
+  updatetime = 200, -- faster completion & CursorHold (default 4000ms)
+  lazyredraw = true, -- don't redraw while executing macros
+  synmaxcol = 240, -- max column for syntax highlight (performance on long lines)
+  redrawtime = 1500, -- allow more time for syntax highlighting on large files
 }
 --
 -- set all the oprions in the table above
@@ -69,7 +74,7 @@ vim.opt.shortmess:append "c" -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append "-" -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove { "c", "r", "o" } -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove "/usr/share/vim/vimfiles" -- separate vim plugins from neovim in case vim still in use
-vim.notify = function() end
+-- vim.notify disabled - using nvim-notify plugin instead
 
 vim.api.nvim_command [[aunmenu PopUp.How-to\ disable\ mouse]]
 vim.api.nvim_command [[aunmenu PopUp.-1-]]

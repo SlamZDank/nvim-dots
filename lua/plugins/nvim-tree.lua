@@ -1,8 +1,10 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
-    priority = 1000,
-    lazy = false,
+    cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeOpen" },
+    keys = {
+      { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
+    },
     opts = {
       filters = {
         git_ignored = false,

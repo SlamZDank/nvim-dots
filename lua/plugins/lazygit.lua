@@ -1,7 +1,6 @@
 -- nvim v0.8.0
 return {
   "kdheepak/lazygit.nvim",
-  lazy = false,
   cmd = {
     "LazyGit",
     "LazyGitConfig",

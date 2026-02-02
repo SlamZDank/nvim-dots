@@ -24,7 +24,7 @@ remove("n", "<leader>n")
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle the Nvim Tree" })
+-- nvim-tree keymap moved to plugin spec for proper lazy loading
 keymap(
   "n",
   "<leader>ca",
@@ -96,53 +96,6 @@ end, { desc = "Open the context menu" })
 keymap("n", "<leader>th", function()
   require("nvchad.themes").open { style = "compact" }
 end, { desc = "Telescope NvChad themes" })
-
--- diagnostic window
-keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line' }) end,
-  { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
-
--- add minty and menu and remove the default context menu and color meny
-keymap("n", "<leader>rm", function()
-  require("menu").open "default"
-end, { desc = "Open the context menu" })
-
--- mouse users + nvimtree users!
-keymap("n", "<RightMouse>", function()
-  vim.cmd.exec '"normal! \\<RightMouse>"'
-
-  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
-  require("menu").open(options, { mouse = true })
-end, { desc = "Open the context menu" })
-
--- use the new style of the theme picker
-keymap("n", "<leader>th", function()
-  require("nvchad.themes").open { style = "compact" }
-end, { desc = "Telescope NvChad themes" })
-
--- so it auto indents the upon finding an empty line
-for _, key in ipairs(keys) do
-  keymap('n', key, function()
-    local line = vim.api.nvim_get_current_line()
-    if string.match(line, '%g') == nil
-        and vim.bo.buftype ~= "nofile"   -- Blocks Telescope/popups
-        and vim.bo.buftype ~= "prompt"   -- Blocks command prompts
-        and vim.bo.buftype ~= "terminal" -- Blocks terminals
-    then
-      return 'cc'
-    else
-      return key
-    end
-  end, { expr = true, noremap = true })
-end
-
--- Insert --
--- Kde is the goat, caps lock is now escape
-
--- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv^", { desc = "Stay in indent mode" })
-keymap("v", ">", ">gv^", { desc = "Stay in indent mode" })
-keymap('v', 'y', 'ygv', { noremap = true, silent = true })
 
 -- Visual Block --
 -- Move text up and down
