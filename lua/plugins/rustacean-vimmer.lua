@@ -16,11 +16,8 @@ return {
         adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
       },
       server = {
-        on_attach = function (client, bufnr)
-          require("nvchad.configs.lspconfig").on_attach(client, bufnr)
-          vim.diagnostic.config({
-            virtual_text = false,
-          })
+        on_attach = function(client, bufnr)
+          require("configs.lspconfig").on_attach(client, bufnr)
         end,
 
         default_settings = {

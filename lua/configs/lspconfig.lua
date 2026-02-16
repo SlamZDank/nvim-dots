@@ -1,116 +1,45 @@
-local default_on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-
--- remove diagnostic virtual text
-local on_attach = function(client, bufnr)
-  default_on_attach(client, bufnr)
-
+local function on_attach(client, bufnr)
+  require("nvchad.configs.lspconfig").on_attach(client, bufnr)
   vim.diagnostic.config({
     virtual_text = false,
   })
 end
 
-local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+local capabilities = require("nvchad.configs.lspconfig").capabilities
+local on_init = require("nvchad.configs.lspconfig").on_init
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-  }
+vim.lsp.config("*", {
+  capabilities = capabilities,
+  on_init = on_init,
+  on_attach = on_attach,
+})
+
+local servers = { "html", "cssls", "ts_ls", "eslint", "emmet_language_server", "tailwindcss", "bashls", "postgres_lsp", "sqls" }
+
+for _, server in ipairs(servers) do
+  vim.lsp.enable(server)
 end
 
--- typescript
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
-lspconfig.eslint.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
 -- lua
-lspconfig.lua_ls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
--- emmet
-lspconfig.emmet_language_server.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
--- tailwind
-lspconfig.tailwindcss.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
---bash
-lspconfig.bashls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
--- ruby
--- lspconfig.solargraph.setup {
---   on_attach = on_attach,
---   on_init = on_init,
---   capabilities = capabilities,
--- }
-
--- sql
-lspconfig.postgres_lsp.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
-lspconfig.sqls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
--- lspconfig.phpactor.setup {
---   on_attach = on_attach,
---   on_init = on_init,
---   capabilities = capabilities,
--- }
-
--- rust analyser: disabled due to rustacean vim plugin
--- lspconfig.rust_analyzer.setup {
--- on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { "rust" },
---   settings = {
---     ["rust-analyzer"] = {
---       cargo = {
---         allFeatures = true,
---       },
---       checkOnSave = {
---         command = "clippy",
---       },
---     },
---   },
--- }
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      runtime = { version = "LuaJIT" },
+      workspace = {
+        library = {
+          vim.fn.expand "$VIMRUNTIME/lua",
+          vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+          "${3rd}/luv/library",
+        },
+      },
+    },
+  },
+})
+vim.lsp.enable("lua_ls")
 
 -- C, C++
-lspconfig.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.lsp.config("clangd", {
   filetypes = { "c", "cpp" },
   cmd = {
     "clangd",
@@ -126,13 +55,11 @@ lspconfig.clangd.setup {
     "--header-insertion=iwyu",
     "--pch-storage=memory",
   },
-}
-
+})
+vim.lsp.enable("clangd")
 
 -- python
-lspconfig.basedpyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.lsp.config("basedpyright", {
   filetypes = { "python" },
   settings = {
     pyright = { autoImportCompletion = true },
@@ -145,4 +72,10 @@ lspconfig.basedpyright.setup {
       },
     },
   },
+})
+vim.lsp.enable("basedpyright")
+
+-- Export on_attach for other plugins to use
+return {
+  on_attach = on_attach,
 }

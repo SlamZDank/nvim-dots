@@ -12,6 +12,8 @@ return {
         "~/",
         "~/projects/*",
         "~/Developer/*",
+        "~/h3ck3r/*",
+        "~/notes/*",
         "~/.config/*",
       },
       -- Path to store history and sessions

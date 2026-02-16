@@ -97,6 +97,12 @@ keymap("n", "<leader>th", function()
   require("nvchad.themes").open { style = "compact" }
 end, { desc = "Telescope NvChad themes" })
 
+-- Visual --
+-- Stay in indent mode and keep selection after yank
+keymap("v", "<", "<gv^", { desc = "Indent left and reselect" })
+keymap("v", ">", ">gv^", { desc = "Indent right and reselect" })
+keymap("v", "y", "ygv", { noremap = true, silent = true, desc = "Yank and reselect" })
+
 -- Visual Block --
 -- Move text up and down
 keymap("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down" })
