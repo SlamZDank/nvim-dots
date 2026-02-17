@@ -1,8 +1,8 @@
 local function on_attach(client, bufnr)
   require("nvchad.configs.lspconfig").on_attach(client, bufnr)
-  vim.diagnostic.config({
+  vim.diagnostic.config {
     virtual_text = false,
-  })
+  }
 end
 
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -14,7 +14,18 @@ vim.lsp.config("*", {
   on_attach = on_attach,
 })
 
-local servers = { "html", "cssls", "ts_ls", "eslint", "emmet_language_server", "tailwindcss", "bashls", "postgres_lsp", "sqls" }
+local servers = {
+  "html",
+  "cssls",
+  "ts_ls",
+  "eslint",
+  "emmet_language_server",
+  "tailwindcss",
+  "bashls",
+  "postgres_lsp",
+  "sqls",
+  "texlab",
+}
 
 for _, server in ipairs(servers) do
   vim.lsp.enable(server)
@@ -36,7 +47,7 @@ vim.lsp.config("lua_ls", {
     },
   },
 })
-vim.lsp.enable("lua_ls")
+vim.lsp.enable "lua_ls"
 
 -- C, C++
 vim.lsp.config("clangd", {
@@ -56,7 +67,7 @@ vim.lsp.config("clangd", {
     "--pch-storage=memory",
   },
 })
-vim.lsp.enable("clangd")
+vim.lsp.enable "clangd"
 
 -- python
 vim.lsp.config("basedpyright", {
@@ -73,7 +84,7 @@ vim.lsp.config("basedpyright", {
     },
   },
 })
-vim.lsp.enable("basedpyright")
+vim.lsp.enable "basedpyright"
 
 -- Export on_attach for other plugins to use
 return {
