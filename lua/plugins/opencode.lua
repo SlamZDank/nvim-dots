@@ -3,6 +3,7 @@
 
 return {
   "NickvanDyke/opencode.nvim",
+  enabled = false,
   event = "BufEnter",
   dependencies = {
     { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },

@@ -17,7 +17,7 @@ vim.lsp.config("*", {
 local servers = {
   "html",
   "cssls",
-  "ts_ls",
+  "vtsls",
   "eslint",
   "emmet_language_server",
   "tailwindcss",

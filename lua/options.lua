@@ -53,6 +53,7 @@ for k, v in pairs(options) do
 end
 
 if vim.g.neovide then
+  vim.g.neovide_cursor_vfx_mode = ""
   vim.g.neovide_opacity = 0.9
   vim.g.neovide_refresh_rate_idle = 5
   vim.g.neovide_floating_blur_amount_x = 5.0
