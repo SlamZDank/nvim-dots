@@ -1,6 +1,7 @@
 -- Linus torvalds Vibe codes now
 -- what a world to live in
 
+-- this is no longer useful, and is so ass at this point i want to code without ai
 return {
   "NickvanDyke/opencode.nvim",
   enabled = false,
