@@ -13,6 +13,21 @@ return {
         enable = true,
         update_root = true,
       },
+      diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        icons = {
+          hint = "󱜸",
+          info = "",
+          warning = "",
+          error = "",
+        },
+      },
+      git = {
+        enable = true,
+        show_on_dirs = true,
+        show_on_open_dirs = true,
+      },
       filters = {
         git_ignored = false,
         dotfiles = false,
@@ -27,14 +42,13 @@ return {
     },
     config = function(_, opts)
       require("nvim-tree").setup(opts)
-
-      local api = require("nvim-tree.api")
+      local api = require "nvim-tree.api"
       local arg = vim.fn.argv(0)
       if arg and vim.fn.isdirectory(arg) == 1 then
         vim.cmd.cd(arg)
         vim.schedule(function()
-          vim.cmd("bdelete")
-          api.tree.open({ path = arg })
+          vim.cmd "bdelete"
+          api.tree.open { path = arg }
         end)
       end
     end,
