@@ -31,7 +31,6 @@ keymap(
   "<cmd>lua vim.lsp.buf.code_action()<CR>",
   { desc = "Code Action", noremap = true, silent = true }
 )
-
 keymap("n", "<C-h>", "<C-w>h", { desc = "Switch to the window on the left " })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Switch to the window on the bottom" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
@@ -85,6 +84,8 @@ keymap("n", "<leader>rm", function()
 end, { desc = "Open the context menu" })
 
 -- mouse users + nvimtree users!
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
+
 keymap("n", "<RightMouse>", function()
   vim.cmd.exec '"normal! \\<RightMouse>"'
 
