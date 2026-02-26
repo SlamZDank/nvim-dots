@@ -21,6 +21,7 @@ local servers = {
   "eslint",
   "emmet_language_server",
   "tailwindcss",
+  "clangd",
   "bashls",
   "postgres_lsp",
   "sqls",
@@ -52,6 +53,9 @@ vim.lsp.enable "lua_ls"
 -- C, C++
 vim.lsp.config("clangd", {
   filetypes = { "c", "cpp" },
+  handlers = {
+    ["textDocument/publishDiagnostics"] = function() end,
+  },
   cmd = {
     "clangd",
     "--background-index",
