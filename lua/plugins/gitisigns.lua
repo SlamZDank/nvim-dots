@@ -20,7 +20,7 @@ return {
         ignore_whitespace = false,
       },
 
-      current_line_blame_formatter = function(name, blame_info)
+      current_line_blame_formatter = function(_, blame_info)
         if vim.api.nvim_get_current_line():match "^%s*$" then
           return { { "" } }
         end
@@ -31,7 +31,7 @@ return {
               blame_info.abbrev_sha,
               os.date("%d-%m-%Y", blame_info.author_time),
               os.date("%H:%M", blame_info.author_time),
-              name,
+              blame_info.author,
               blame_info.summary
             ),
             "GitSignsCurrentLineBlame",
