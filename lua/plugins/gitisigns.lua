@@ -15,7 +15,7 @@ return {
     current_line_blame_opts = {
       virt_text = true,
       virt_text_pos = "eol",
-      delay = 2000,
+      delay = 500,
       ignore_whitespace = false,
     },
     current_line_blame_formatter = " <abbrev_sha> | <author_time:%d-%m-%Y> <author_time:%H:%M> | <author> | <summary> ",
@@ -51,6 +51,9 @@ return {
       -- Text objects
       vim.keymap.set("x", "ih", ":<C-u>Gitsigns select_hunk<CR>", { buffer = bufnr })
       vim.keymap.set("o", "ih", "<cmd>Gitsigns select_hunk<CR>",   { buffer = bufnr })
+
+      -- GitBlame line color
+      vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#6b6b6b" })
     end,
   },
 }
