@@ -9,6 +9,11 @@ return {
       throttle = 100, -- add throttling for performance
       options = {
         multilines = false, -- disable multiline for speed
+        virt_texts = {
+          priority = 2048,
+        },
+        show_code = true,
+        override_open_float = false,
       },
     }
   end,

@@ -25,9 +25,8 @@ return {
             end,
             "fallback",
           },
-          ["<S-Tab>"] = false,
           ["<A-j>"] = { "select_next", "fallback" },
-          -- ['q'] = {'hide', 'fallback'},
+          ["<S-Tab>"] = { "hide", "fallback" },
           ["<C-u>"] = { "scroll_documentation_up" },
           ["<A-k>"] = { "select_prev", "fallback" },
           ["<C-d>"] = { "scroll_documentation_down" },
@@ -40,7 +39,7 @@ return {
           },
           documentation = {
             auto_show = true,
-            auto_show_delay_ms = 500,
+            auto_show_delay_ms = 3000,
           },
           list = {
             max_items = 50, -- limit completion items for performance
