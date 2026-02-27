@@ -1,10 +1,4 @@
-local function on_attach(client, bufnr)
-  require("nvchad.configs.lspconfig").on_attach(client, bufnr)
-  vim.diagnostic.config {
-    virtual_text = false,
-  }
-end
-
+local on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local on_init = require("nvchad.configs.lspconfig").on_init
 
@@ -19,6 +13,7 @@ local servers = {
   "cssls",
   "vtsls",
   "eslint",
+  "basedpyright",
   "emmet_language_server",
   "tailwindcss",
   "clangd",
@@ -53,9 +48,6 @@ vim.lsp.enable "lua_ls"
 -- C, C++
 vim.lsp.config("clangd", {
   filetypes = { "c", "cpp" },
-  handlers = {
-    ["textDocument/publishDiagnostics"] = function() end,
-  },
   cmd = {
     "clangd",
     "--background-index",
@@ -90,7 +82,7 @@ vim.lsp.config("basedpyright", {
 })
 vim.lsp.enable "basedpyright"
 
--- Export on_attach for other plugins to use
-return {
-  on_attach = on_attach,
-}
+-- -- Export on_attach for other plugins to use
+-- return {
+--   on_attach = on_attach,
+-- }
