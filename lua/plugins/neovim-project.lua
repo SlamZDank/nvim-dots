@@ -7,19 +7,16 @@ return {
   config = function()
     local neovim_project = require "neovim-project"
     neovim_project.setup {
-      -- Project directories + home for simpler navigation
       projects = {
-        "~/",
         "~/projects/*",
-        "~/Developer/*",
-        "~/h3ck3r/*",
-        "~/notes/*",
+        "~/Work/Developer/*",
+        "~/Work/Hacker/*",
         "~/.config/*",
       },
       -- Path to store history and sessions
       datapath = vim.fn.stdpath "data", -- ~/.local/share/nvim/
       -- Load the most recent session on startup if not in the project directory
-      last_session_on_startup = true,
+      last_session_on_startup = false,
       -- Dashboard mode prevent session autoload on startup
       dashboard_mode = false,
       -- Timeout in milliseconds before trigger FileType autocmd after session load
