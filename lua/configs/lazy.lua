@@ -11,6 +11,11 @@ return {
     },
   },
 
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
+
   performance = {
     rtp = {
       disabled_plugins = {

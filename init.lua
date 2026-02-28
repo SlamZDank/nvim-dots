@@ -18,11 +18,9 @@ require("lazy").setup({
   {
     "NvChad/NvChad",
     lazy = false,
+    priority = 1000,
     branch = "v2.5",
     import = "nvchad.plugins",
-    config = function()
-      require "options"
-    end,
   },
 
   { import = "plugins" },
@@ -36,11 +34,12 @@ vim.opt.termguicolors = true
 
 -- defer non-critical loads for faster startup
 vim.defer_fn(function()
-  require("configs.dapconfig")
-  require("custom.lsp_popup")
+  require "configs.dapconfig"
+  require "themes.components.lsp_popup"
 end, 50)
 
-require "nvchad.autocmds"
+require "autocmds"
+require "options"
 
 vim.schedule(function()
   require "mappings"
