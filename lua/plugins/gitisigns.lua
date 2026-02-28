@@ -14,9 +14,9 @@ return {
 
       current_line_blame = true,
       current_line_blame_opts = {
-        virt_text = true,
+        virt_text = false,
         virt_text_pos = "eol",
-        delay = 500,
+        delay = 0,
         ignore_whitespace = false,
       },
 
@@ -24,6 +24,16 @@ return {
         if vim.api.nvim_get_current_line():match "^%s*$" then
           return { { "" } }
         end
+
+        local summary = blame_info.summary or ""
+        local words = {}
+        for word in summary:gmatch "%S+" do
+          words[#words + 1] = word
+        end
+        if #words > 8 then
+          summary = table.concat(words, " ", 1, 8) .. "..."
+        end
+
         return {
           {
             string.format(
@@ -32,7 +42,7 @@ return {
               os.date("%d-%m-%Y", blame_info.author_time),
               os.date("%H:%M", blame_info.author_time),
               blame_info.author,
-              blame_info.summary
+              summary
             ),
             "GitSignsCurrentLineBlame",
           },
@@ -41,9 +51,20 @@ return {
 
       on_attach = function(bufnr)
         local gs = require "gitsigns"
+
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+          buffer = bufnr,
+          callback = function()
+            vim.defer_fn(function()
+              vim.cmd "redrawstatus"
+            end, 50)
+          end,
+        })
+
         local function map(mode, lhs, rhs, desc)
           vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
         end
+
         -- Normal
         map("n", "<leader>gb", function()
           gs.blame_line()
@@ -61,6 +82,7 @@ return {
         map("n", "<leader>gD", function()
           gs.diffthis "~1"
         end, "Git diff buffer to last commit")
+
         -- Visual
         map("v", "<leader>gr", function()
           gs.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
@@ -73,7 +95,6 @@ return {
         vim.keymap.set("x", "ih", ":<C-u>Gitsigns select_hunk<CR>", { buffer = bufnr })
         vim.keymap.set("o", "ih", "<cmd>Gitsigns select_hunk<CR>", { buffer = bufnr })
 
-        -- GitBlame line color
         vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame", { fg = "#6b6b6b" })
       end,
     }

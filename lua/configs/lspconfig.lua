@@ -26,6 +26,21 @@ end
 
 -- Servers with custom configuration
 local custom_servers = {
+  -- Rust (bacon-ls)
+  ["bacon-ls"] = {
+    cmd = { "bacon-ls" },
+    filetypes = { "rust" },
+    root_markers = { "Cargo.toml", "Cargo.lock" },
+    settings = {
+      ["bacon-ls"] = {
+        locationsFile = ".bacon-locations",
+        updateOnSave = true,
+        updateOnSaveWaitMillis = 1000,
+        updateOnChange = false,
+      },
+    },
+  },
+
   -- Lua
   lua_ls = {
     settings = {
@@ -82,3 +97,20 @@ for server, config in pairs(custom_servers) do
   vim.lsp.config(server, config)
   vim.lsp.enable(server)
 end
+
+-- typos-lsp: attach to all buffers
+vim.api.nvim_create_autocmd({"BufReadPost", "BufEnter"}, {
+  callback = function()
+    vim.lsp.start({
+      name = "typos_lsp",
+      cmd = { "typos-lsp" },
+      root_dir = vim.fs.root(0, { ".git" }) or vim.fn.getcwd(),
+      settings = {
+        diagnosticSeverity = "Warning",
+      },
+      on_attach = function(client, bufnr)
+        require("nvchad.configs.lspconfig").on_attach(client, bufnr)
+      end,
+    })
+  end,
+})

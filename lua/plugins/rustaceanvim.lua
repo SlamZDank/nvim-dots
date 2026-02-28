@@ -17,19 +17,19 @@ return {
       },
       server = {
         on_attach = function(client, bufnr)
-          require("configs.lspconfig").on_attach(client, bufnr)
+          require("nvchad.configs.lspconfig").on_attach(client, bufnr)
         end,
 
         default_settings = {
           ["rust-analyzer"] = {
-            check = {
-              command = "clippy",
-            },
+            -- check = {
+            --   command = "clippy",
+            -- },
             checkOnSave = {
-              enable = true,
+              enable = false,
             },
             diagnostics = {
-              enable = true,
+              enable = false,
             },
           },
         },

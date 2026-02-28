@@ -35,6 +35,16 @@ local options = {
       -- default/round/block/arrow separators work only for default statusline theme
       -- round and block will work for minimal theme only
       separator_style = "default",
+      modules = {
+        blame = function()
+          local blame = vim.b.gitsigns_blame_line
+          if not blame or blame == "" then
+            return ""
+          end
+          return "%#GitSignsCurrentLineBlame#" .. blame .. "%*  "
+        end,
+      },
+      order = { "mode", "file", "git", "%=", "blame", "lsp_msg", "%=", "diagnostics", "cursor", "cwd" },
     },
 
     mason = {
@@ -51,6 +61,7 @@ local options = {
         "basedpyright",
         "emmet-language-server",
         "tailwindcss-language-server",
+        "typos-lsp",
       },
     },
 
@@ -60,7 +71,6 @@ local options = {
       order = { "buffers", "tabs", "treeOffset" },
       modules = nil,
     },
-    -- this is broken on the latest ui update of nvchad
   },
 
   nvdash = {

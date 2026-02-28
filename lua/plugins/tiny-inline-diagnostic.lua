@@ -14,6 +14,7 @@ return {
         },
         show_code = true,
         override_open_float = false,
+        overflow = { position = "eol" },
       },
     }
   end,
