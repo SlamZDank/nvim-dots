@@ -18,7 +18,7 @@ return {
       TEST = { icon = "󰙨 ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
     }
 
-    --see: 
+    --see:
     -- Custom keywords
     local keywords = {
       SEE = {
@@ -37,8 +37,8 @@ return {
       desc = "Check Todos",
     })
 
-    require("todo-comments").setup({
+    require("todo-comments").setup {
       keywords = keywords,
-    })
+    }
   end,
 }

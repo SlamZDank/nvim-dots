@@ -5,7 +5,7 @@ local remove = vim.keymap.del
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
 
-local keys = { 'i', 'I', 'a', 'A' }
+local keys = { "i", "I", "a", "A" }
 
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
@@ -54,29 +54,29 @@ keymap("n", "<A-j>", ":m .+1<CR>==", { desc = "Move text up" })
 keymap("n", "<A-k>", ":m .-2<CR>==", { desc = "Move text down" })
 
 -- window management
-keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })                         -- split window vertically
-keymap("n", "<leader>so", "<C-w>s", { desc = "Split window horizontally" })                       -- split window horizontally
-keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })                          -- make split windows equal width & height
-keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })                     -- close current split window
+keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+keymap("n", "<leader>so", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+keymap("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap("n", "<leader>wo", "<cmd>tabnew<CR>", { desc = "Open new workspace" })                     -- open new tab
-keymap("n", "<leader>wx", "<cmd>tabclose<CR>", { desc = "Close current workspace" })              -- close current tab
-keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" })                     --  go to next tab
-keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" })                 --  go to previous tab
+keymap("n", "<leader>wo", "<cmd>tabnew<CR>", { desc = "Open new workspace" }) -- open new tab
+keymap("n", "<leader>wx", "<cmd>tabclose<CR>", { desc = "Close current workspace" }) -- close current tab
+keymap("n", "<leader>wn", "<cmd>tabn<CR>", { desc = "Go to next workspace" }) --  go to next tab
+keymap("n", "<leader>wp", "<cmd>tabp<CR>", { desc = "Go to previous workspace" }) --  go to previous tab
 keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new workspace" }) --  move current buffer to new tab
 
 -- disable macros, (wtf were you thinking SlamZDank!)
 -- keymap("n", "q", "", {})
 
 -- diagnostic window
-keymap('n', '<space>we', function() vim.diagnostic.open_float(0, { scope = 'line' }) end,
-  { noremap = true, silent = true, desc = 'LSP Show line diagnostics' })
+keymap("n", "<space>we", function()
+  vim.diagnostic.open_float(0, { scope = "line" })
+end, { noremap = true, silent = true, desc = "LSP Show line diagnostics" })
 
 -- diagnostic list of errors
 keymap("n", "<leader>ll", function()
   vim.diagnostic.setloclist()
 end, { desc = "Show LSP diagnostics in loclist" })
-
 
 -- add minty and menu and remove the default context menu and color meny
 keymap("n", "<leader>rm", function()

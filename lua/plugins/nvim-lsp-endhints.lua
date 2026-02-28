@@ -6,7 +6,7 @@ return {
     require("lsp-endhints").setup {
       label = {
         truncateAtChars = 9000,
-      }
+      },
     }
   end,
 }

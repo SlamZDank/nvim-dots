@@ -1,5 +1,5 @@
-local dap = require("dap")
-dap.defaults.fallback.switchbuf = 'usevisible,uselast'
+local dap = require "dap"
+dap.defaults.fallback.switchbuf = "usevisible,uselast"
 
 -- DAPs
 -- https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
@@ -9,7 +9,6 @@ dap.adapters.codelldb = {
   type = "executable",
   command = "codelldb",
 }
-
 
 -- Dap Configurations
 
@@ -21,9 +20,9 @@ dap.configurations.c = {
     type = "codelldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Executable C Program Path: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input("Executable C Program Path: ", vim.fn.getcwd() .. "/", "file")
     end,
-    cwd = '${workspaceFolder}',
+    cwd = "${workspaceFolder}",
     stopOnEntry = false,
   },
 }
@@ -34,9 +33,9 @@ dap.configurations.cpp = {
     type = "codelldb",
     request = "launch",
     program = function()
-      return vim.fn.input('Executable C++ Program Path: ', vim.fn.getcwd() .. '/', 'file')
+      return vim.fn.input("Executable C++ Program Path: ", vim.fn.getcwd() .. "/", "file")
     end,
-    cwd = '${workspaceFolder}',
+    cwd = "${workspaceFolder}",
     stopOnEntry = false,
   },
 }
