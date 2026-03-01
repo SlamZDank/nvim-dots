@@ -52,12 +52,12 @@ return {
       on_attach = function(bufnr)
         local gs = require "gitsigns"
 
-        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "BufWritePost" }, {
           buffer = bufnr,
           callback = function()
             vim.defer_fn(function()
               vim.cmd "redrawstatus"
-            end, 50)
+            end, 65)
           end,
         })
 
