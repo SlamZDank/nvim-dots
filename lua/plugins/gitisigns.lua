@@ -15,16 +15,11 @@ return {
       current_line_blame = true,
       current_line_blame_opts = {
         virt_text = false,
-        virt_text_pos = "eol",
         delay = 0,
         ignore_whitespace = false,
       },
 
       current_line_blame_formatter = function(_, blame_info)
-        if vim.api.nvim_get_current_line():match "^%s*$" then
-          return { { "" } }
-        end
-
         local function time_since(epoch)
           local diff = os.time() - epoch
           if diff < 60 then
