@@ -64,20 +64,17 @@ local options = {
           end
 
           local stbufnr = stl_utils.stbufnr()
-          local fallback = nil
+          local lsp_names = {}
 
           for _, client in ipairs(vim.lsp.get_clients()) do
-            if client.attached_buffers[stbufnr] then
-              if client.name == "typos_lsp" then
-                fallback = client.name
-              else
-                return "%#St_Lsp#󰣖 " .. client.name .. " "
-              end
+            if client.attached_buffers[stbufnr] and client.name ~= "typos_lsp" then
+              local first_word = client.name:match "^[^_%-]+" or client.name
+              table.insert(lsp_names, first_word)
             end
           end
 
-          if fallback then
-            return "%#St_Lsp#󰣖 " .. fallback .. " "
+          if #lsp_names > 0 then
+            return "%#St_Lsp#󰣖 " .. table.concat(lsp_names, " · ") .. " "
           end
           return ""
         end,
