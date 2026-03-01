@@ -33,10 +33,9 @@ local custom_servers = {
     root_markers = { "Cargo.toml", "Cargo.lock" },
     settings = {
       ["bacon-ls"] = {
-        locationsFile = ".bacon-locations",
         updateOnSave = true,
         updateOnSaveWaitMillis = 1000,
-        updateOnChange = false,
+        updateOnChange = true,
       },
     },
   },
@@ -99,9 +98,9 @@ for server, config in pairs(custom_servers) do
 end
 
 -- typos-lsp: attach to all buffers
-vim.api.nvim_create_autocmd({"BufReadPost", "BufEnter"}, {
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufEnter" }, {
   callback = function()
-    vim.lsp.start({
+    vim.lsp.start {
       name = "typos_lsp",
       cmd = { "typos-lsp" },
       root_dir = vim.fs.root(0, { ".git" }) or vim.fn.getcwd(),
@@ -111,6 +110,6 @@ vim.api.nvim_create_autocmd({"BufReadPost", "BufEnter"}, {
       on_attach = function(client, bufnr)
         require("nvchad.configs.lspconfig").on_attach(client, bufnr)
       end,
-    })
+    }
   end,
 })

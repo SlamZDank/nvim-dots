@@ -44,7 +44,7 @@ local options = {
           return "%#GitSignsCurrentLineBlame#" .. blame .. "%*  "
         end,
       },
-      order = { "mode", "file", "git", "%=", "blame", "lsp_msg", "%=", "diagnostics", "cursor", "cwd" },
+      order = { "mode", "file", "git", "%=", "blame", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
     },
 
     mason = {

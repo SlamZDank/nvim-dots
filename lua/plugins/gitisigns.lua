@@ -30,8 +30,8 @@ return {
         for word in summary:gmatch "%S+" do
           words[#words + 1] = word
         end
-        if #words > 8 then
-          summary = table.concat(words, " ", 1, 8) .. "..."
+        if #words > 5 then
+          summary = table.concat(words, " ", 1, 5) .. "..."
         end
 
         return {

@@ -47,7 +47,7 @@ local options = {
   redrawtime = 1500, -- allow more time for syntax highlighting on large files
 }
 --
--- set all the oprions in the table above
+-- set all the options in the table above
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
