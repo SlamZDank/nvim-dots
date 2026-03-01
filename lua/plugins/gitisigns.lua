@@ -25,24 +25,30 @@ return {
           return { { "" } }
         end
 
-        local summary = blame_info.summary or ""
-        local words = {}
-        for word in summary:gmatch "%S+" do
-          words[#words + 1] = word
-        end
-        if #words > 5 then
-          summary = table.concat(words, " ", 1, 5) .. "..."
+        local function time_since(epoch)
+          local diff = os.time() - epoch
+          if diff < 60 then
+            return diff .. "s ago"
+          elseif diff < 3600 then
+            return math.floor(diff / 60) .. "m ago"
+          elseif diff < 86400 then
+            return math.floor(diff / 3600) .. "h ago"
+          elseif diff < 2592000 then
+            return math.floor(diff / 86400) .. "d ago"
+          elseif diff < 31536000 then
+            return math.floor(diff / 2592000) .. "mo ago"
+          else
+            return math.floor(diff / 31536000) .. "y ago"
+          end
         end
 
         return {
           {
             string.format(
-              " %s · %s %s · %s · %s ",
+              " %s · %s · %s",
               blame_info.abbrev_sha,
-              os.date("%d-%m-%Y", blame_info.author_time),
-              os.date("%H:%M", blame_info.author_time),
               blame_info.author,
-              summary
+              time_since(blame_info.author_time)
             ),
             "GitSignsCurrentLineBlame",
           },
