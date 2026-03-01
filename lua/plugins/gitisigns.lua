@@ -45,7 +45,7 @@ return {
         return {
           {
             string.format(
-              " %s · %s · %s",
+              " %s · %s · %s",
               blame_info.abbrev_sha,
               blame_info.author,
               time_since(blame_info.author_time)
