@@ -4,7 +4,10 @@ return {
   priority = 1000,
   config = function()
     vim.diagnostic.config { virtual_text = false }
-    require("tiny-inline-diagnostic").setup {
+
+    local tiny = require("tiny-inline-diagnostic")
+
+    tiny.setup {
       preset = "simple",
       options = {
         throttle = 100, -- add throttling for performance
@@ -18,5 +21,19 @@ return {
         overwrite_events = { "LspAttach", "BufEnter", "DiagnosticChanged" },
       },
     }
+
+    -- Hide diagnostics when leaving a buffer
+    vim.api.nvim_create_autocmd("BufLeave", {
+      callback = function()
+        tiny.disable()
+      end,
+    })
+
+    -- Show diagnostics when entering a buffer
+    vim.api.nvim_create_autocmd("BufEnter", {
+      callback = function()
+        tiny.enable()
+      end,
+    })
   end,
 }
