@@ -43,8 +43,47 @@ local options = {
           end
           return "%#GitSignsCurrentLineBlame#" .. blame .. "%*  "
         end,
+
+        lsp_msg = function()
+          local stl_utils = require "nvchad.stl.utils"
+          local msg = stl_utils.state.lsp_msg
+          if not msg or msg == "" then
+            return ""
+          elseif msg:sub(-1) == " " then
+            return "%#St_lsp_msg#" .. msg
+          end
+          return "%#St_lsp_msg#" .. msg .. " "
+        end,
+
+        lsp = function()
+          local stl_utils = require "nvchad.stl.utils"
+          local msg = stl_utils.state.lsp_msg
+
+          if msg and msg ~= "" then
+            return ""
+          end
+
+          local stbufnr = stl_utils.stbufnr()
+          local fallback = nil
+
+          for _, client in ipairs(vim.lsp.get_clients()) do
+            if client.attached_buffers[stbufnr] then
+              if client.name == "typos_lsp" then
+                fallback = client.name
+              else
+                return "%#St_Lsp#󰣖 " .. client.name .. " "
+              end
+            end
+          end
+
+          if fallback then
+            return "%#St_Lsp#󰣖 " .. fallback .. " "
+          end
+          return ""
+        end,
       },
-      order = { "mode", "file", "git", "%=", "blame", "lsp_msg", "%=", "diagnostics", "lsp", "cwd" },
+
+      order = { "mode", "file", "git", "%=", "blame", "%=", "diagnostics", "lsp", "lsp_msg", "cwd" },
     },
 
     mason = {
