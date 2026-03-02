@@ -49,7 +49,9 @@ local options = {
 --
 -- set all the options in the table above
 for k, v in pairs(options) do
-  pcall(function() vim.opt[k] = v end)
+  pcall(function()
+    vim.opt[k] = v
+  end)
 end
 
 if vim.g.neovide then
