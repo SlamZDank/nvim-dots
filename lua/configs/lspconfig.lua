@@ -13,7 +13,6 @@ local servers = {
   "vtsls",
   "eslint",
   "emmet_language_server",
-  "tailwindcss",
   "bashls",
   "postgres_lsp",
   "sqls",
@@ -26,6 +25,20 @@ end
 
 -- Servers with custom configuration
 local custom_servers = {
+  -- Tailwind CSS (only start if a tailwind config exists)
+  tailwindcss = {
+    root_dir = function(bufnr, cb)
+      local root = vim.fs.root(bufnr, {
+        "tailwind.config.js",
+        "tailwind.config.cjs",
+        "tailwind.config.mjs",
+        "tailwind.config.ts",
+      })
+      -- Return nil to prevent LSP from starting if no tailwind config found
+      cb(root)
+    end,
+  },
+
   -- Rust (bacon-ls)
   ["bacon-ls"] = {
     cmd = { "bacon-ls" },
