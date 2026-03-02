@@ -69,7 +69,7 @@ local options = {
           for _, client in ipairs(vim.lsp.get_clients()) do
             if client.attached_buffers[stbufnr] and client.name ~= "typos_lsp" then
               local first_word = client.name:match "^[^_%-]+" or client.name
-              table.insert(lsp_names, first_word)
+              table.insert(lsp_names, first_word:upper())
             end
           end
 

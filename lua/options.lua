@@ -42,14 +42,14 @@ local options = {
   timeoutlen = 250, -- reduce the delay for in between keypresses.
   -- Performance optimizations
   updatetime = 200, -- faster completion & CursorHold (default 4000ms)
-  lazyredraw = true, -- don't redraw while executing macros
+  -- lazyredraw = true, -- don't redraw while executing macros
   synmaxcol = 240, -- max column for syntax highlight (performance on long lines)
   redrawtime = 1500, -- allow more time for syntax highlighting on large files
 }
 --
 -- set all the options in the table above
 for k, v in pairs(options) do
-  vim.opt[k] = v
+  pcall(function() vim.opt[k] = v end)
 end
 
 if vim.g.neovide then

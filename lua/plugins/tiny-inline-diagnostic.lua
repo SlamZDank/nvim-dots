@@ -5,7 +5,7 @@ return {
   config = function()
     vim.diagnostic.config { virtual_text = false }
 
-    local tiny = require("tiny-inline-diagnostic")
+    local tiny = require "tiny-inline-diagnostic"
 
     tiny.setup {
       preset = "simple",
