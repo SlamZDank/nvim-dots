@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
           lnum = i,
           col = 80,
           end_col = #line,
-          message = "Line is too long, \nplease wrap it (" .. #line .. " > 80)",
+          message = "Line is too long, please wrap it!\nLength: " .. #line .. " > 80",
           severity = vim.diagnostic.severity.WARN,
           source = "linelen",
         })
