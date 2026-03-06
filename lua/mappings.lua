@@ -8,28 +8,28 @@ keymap("n", ";", ":", { desc = "CMD enter command mode" })
 -- Make insert commands start at proper indentation on empty/whitespace-only lines
 -- S deletes the line content and starts insert with proper indentation
 keymap("n", "i", function()
-  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+  if vim.fn.match(vim.fn.getline ".", "^\\s*$") ~= -1 then
     return '"_S'
   end
   return "i"
 end, { expr = true, noremap = true, desc = "Insert with smart indentation" })
 
 keymap("n", "I", function()
-  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+  if vim.fn.match(vim.fn.getline ".", "^\\s*$") ~= -1 then
     return '"_S'
   end
   return "I"
 end, { expr = true, noremap = true, desc = "Insert at start with smart indentation" })
 
 keymap("n", "a", function()
-  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+  if vim.fn.match(vim.fn.getline ".", "^\\s*$") ~= -1 then
     return '"_S'
   end
   return "a"
 end, { expr = true, noremap = true, desc = "Append with smart indentation" })
 
 keymap("n", "A", function()
-  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+  if vim.fn.match(vim.fn.getline ".", "^\\s*$") ~= -1 then
     return '"_S'
   end
   return "A"
@@ -49,7 +49,6 @@ remove("n", "<leader>n")
 
 -- Normal --
 -- Better window navigation
--- nvim-tree keymap moved to plugin spec for proper lazy loading
 keymap(
   "n",
   "<leader>ca",
@@ -114,7 +113,7 @@ keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in 
 
 -- diagnostic window
 keymap("n", "<space>we", function()
-  vim.diagnostic.open_float({ scope = "line" })
+  vim.diagnostic.open_float { scope = "line" }
 end, { noremap = true, silent = true, desc = "LSP Show line diagnostics" })
 
 -- diagnostic list of errors
