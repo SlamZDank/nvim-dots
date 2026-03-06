@@ -5,10 +5,35 @@ local remove = vim.keymap.del
 
 keymap("n", ";", ":", { desc = "CMD enter command mode" })
 
-local keys = { "i", "I", "a", "A" }
+-- Make insert commands start at proper indentation on empty/whitespace-only lines
+-- S deletes the line content and starts insert with proper indentation
+keymap("n", "i", function()
+  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+    return '"_S'
+  end
+  return "i"
+end, { expr = true, noremap = true, desc = "Insert with smart indentation" })
 
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+keymap("n", "I", function()
+  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+    return '"_S'
+  end
+  return "I"
+end, { expr = true, noremap = true, desc = "Insert at start with smart indentation" })
+
+keymap("n", "a", function()
+  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+    return '"_S'
+  end
+  return "a"
+end, { expr = true, noremap = true, desc = "Append with smart indentation" })
+
+keymap("n", "A", function()
+  if vim.fn.match(vim.fn.getline("."), "^\\s*$") ~= -1 then
+    return '"_S'
+  end
+  return "A"
+end, { expr = true, noremap = true, desc = "Append at end with smart indentation" })
 
 -- Modes
 --   normal_mode = "n",
@@ -35,6 +60,25 @@ keymap("n", "<C-h>", "<C-w>h", { desc = "Switch to the window on the left " })
 keymap("n", "<C-j>", "<C-w>j", { desc = "Switch to the window on the bottom" })
 keymap("n", "<C-k>", "<C-w>k", { desc = "Switch to the window on top" })
 keymap("n", "<C-l>", "<C-w>l", { desc = "Switch to the window on the right" })
+
+-- Buffer navigation and definitions
+keymap("n", "<leader>gtd", vim.lsp.buf.definition, {
+  desc = "Go to definition",
+  noremap = true,
+  silent = true,
+})
+
+keymap("n", "<leader>br", "<C-^>", {
+  desc = "Return to last buffer",
+  noremap = true,
+  silent = true,
+})
+
+keymap("n", "<leader>bf", "<C-i>", {
+  desc = "Jump forward",
+  noremap = true,
+  silent = true,
+})
 
 -- Clear search highlights
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -70,7 +114,7 @@ keymap("n", "<leader>wf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in 
 
 -- diagnostic window
 keymap("n", "<space>we", function()
-  vim.diagnostic.open_float(0, { scope = "line" })
+  vim.diagnostic.open_float({ scope = "line" })
 end, { noremap = true, silent = true, desc = "LSP Show line diagnostics" })
 
 -- diagnostic list of errors
@@ -78,7 +122,7 @@ keymap("n", "<leader>ll", function()
   vim.diagnostic.setloclist()
 end, { desc = "Show LSP diagnostics in loclist" })
 
--- add minty and menu and remove the default context menu and color meny
+-- add minty and menu and remove the default context menu and color menu
 keymap("n", "<leader>rm", function()
   require("menu").open "default"
 end, { desc = "Open the context menu" })

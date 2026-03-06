@@ -9,10 +9,13 @@ return {
     opts = {
       sync_root_with_cwd = true,
       respect_buf_cwd = true,
-      update_focused_file = {
-        enable = true,
-        update_root = true,
-      },
+
+      -- This destroys the go to definition.
+      -- update_focused_file = {
+      --   enable = true,
+      --   update_root = true,
+      -- },
+
       diagnostics = {
         enable = true,
         show_on_dirs = true,
