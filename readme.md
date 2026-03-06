@@ -1,6 +1,6 @@
 <h1 align="center">Neovim Configuration</h1>
 
-<p align="center">Personal Neovim setup based on <a href="https://nvchad.com/">NvChad</a></p>
+<p align="center">Personal Neovim setup based on <a href="https://nvchad.com/">NvChad!</a></p>
 
 <p align="center">
   <img src="images/Screenshot.png" alt="Screenshot" />
@@ -8,12 +8,11 @@
 
 ## Features
 
-- **NvChad v2.5** as the base framework
+- **NvChad** as the base distribution
 - **Lazy.nvim** for plugin management
 - **LSP** with inline diagnostics and end hints
 - **DAP** debugging support
 - **Blink** completion
-- **Treesitter** with context display
 - **Git** integration (gitsigns, lazygit)
 - **Rust** development (rustaceanvim, crates.nvim)
 - **Python** venv support
@@ -23,7 +22,7 @@
 
 ### Prerequisites
 
-- Neovim >= 0.9
+- Neovim
 - Git
 - A [Nerd Font](https://www.nerdfonts.com/)
 
@@ -49,8 +48,6 @@ nvim +"Lazy sync" +qa
 # Or from inside Neovim
 :Lazy sync
 ```
-
-To update NvChad itself, check `:NvChadUpdate` or pull the latest changes.
 
 ## Structure
 
