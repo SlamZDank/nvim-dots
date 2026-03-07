@@ -22,11 +22,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI", "LspAtt
       return
     end
 
+    local indent_limit = 120
     local diagnostics = {}
 
     for i = 0, vim.api.nvim_buf_line_count(bufnr) - 1 do
       local line = vim.api.nvim_buf_get_lines(bufnr, i, i + 1, false)[1]
-      local indent_limit = 120
       if #line > indent_limit then
         table.insert(diagnostics, {
           lnum = i,
